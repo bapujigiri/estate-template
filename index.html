@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dalwara Real Estate | Find Your Dream Property</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Quick Search */
+        .quick-search-container {
+            margin-bottom: 100px;
+        }
+
+        .quick-search {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-group select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Property Cards Layout for Homepage */
+        .featured-properties .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Company Highlights */
+        .highlights {
+            background-color: #f9f9f9;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .highlight-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(26, 82, 118, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        /* Testimonials */
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .contact-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Responsive for Homepage */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 120px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .quick-search {
+                padding: 20px;
+            }
+
+            .contact-cta h2 {
+                font-size: 2rem;
+            }
+
+            .testimonial {
+                padding: 30px 20px;
+            }
+
+            .highlight-card,
+            .testimonial {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">D</div>
+                <div class="logo-text">Dalwara<span>Estates</span></div>
+            </a>
+
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="properties.html">Properties</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="content">
+        <!-- Homepage Content -->
+        <section class="hero">
+            <div class="container">
+                <h1>Find Your Dream Property with Dalwara</h1>
+                <p>Discover the perfect home, investment property, or commercial space with our expert real estate
+                    services. We've been helping clients find their ideal properties for over 15 years.</p>
+                <a href="properties.html" class="btn">Browse Properties</a>
+            </div>
+        </section>
+
+        <!-- Quick Search -->
+        <section class="quick-search-container">
+            <div class="container">
+                <div class="quick-search">
+                    <h3>Find Your Property</h3>
+                    <form class="search-form">
+                        <div class="form-group">
+                            <label for="property-type">Property Type</label>
+                            <select id="property-type">
+                                <option value="any">Any Type</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="villa">Villa</option>
+                                <option value="office">Office</option>
+                                <option value="land">Land</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <select id="location">
+                                <option value="any">Any Location</option>
+                                <option value="downtown">Downtown</option>
+                                <option value="suburbs">Suburbs</option>
+                                <option value="coastal">Coastal Area</option>
+                                <option value="rural">Rural Area</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price-range">Price Range</label>
+                            <select id="price-range">
+                                <option value="any">Any Price</option>
+                                <option value="low">Under $200,000</option>
+                                <option value="medium">$200,000 - $500,000</option>
+                                <option value="high">$500,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+                            <select id="bedrooms">
+                                <option value="any">Any</option>
+                                <option value="1">1+</option>
+                                <option value="2">2+</option>
+                                <option value="3">3+</option>
+                                <option value="4">4+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn btn-primary">Search Properties</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Properties -->
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Properties</h2>
+                    <p>Explore our handpicked selection of premium properties</p>
+                </div>
+
+                <div class="properties-grid">
+                    <!-- Property 1 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Modern Villa" class="property-img">
+                        <div class="property-content">
+                            <h3>Modern Luxury Villa</h3>
+                            <div class="property-price">$850,000</div>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i> Downtown, Prime Location
+                            </div>
+                            <p>Spacious 4-bedroom villa with modern amenities, swimming pool, and garden in a gated
+                                community.</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>4 Beds</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>3 Baths</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>3200 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 2 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="City Apartment" class="property-img">
+                        <div class="property-content">
+                            <h3>City Center Apartment</h3>
+                            <div class="property-price">$450,000</div>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i> City Center
+                            </div>
+                            <p>Modern 2-bedroom apartment with stunning city views, balcony, and access to gym and pool
+                                facilities.</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>2 Beds</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>2 Baths</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>1200 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Property 3 -->
+                    <div class="property-card">
+                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Suburban House" class="property-img">
+                        <div class="property-content">
+                            <h3>Suburban Family Home</h3>
+                            <div class="property-price">$625,000</div>
+                            <div class="property-location">
+                                <i class="fas fa-map-marker-alt"></i> Green Suburbs
+                            </div>
+                            <p>Charming 3-bedroom house with large backyard, garage, and recently renovated kitchen and
+                                bathrooms.</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>3 Beds</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>2.5 Baths</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-ruler-combined"></i>
+                                    <span>2100 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="properties.html" class="btn btn-primary">View All Properties</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Highlights -->
+        <section class="highlights">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Choose Dalwara</h2>
+                    <p>We provide exceptional real estate services with a commitment to excellence</p>
+                </div>
+
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>15+ Years Experience</h3>
+                        <p>With over 15 years in the real estate industry, we have the expertise to help you find your
+                            perfect property.</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Trusted by Clients</h3>
+                        <p>We've helped thousands of clients find their dream homes and investment properties with
+                            satisfaction.</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Prime Locations</h3>
+                        <p>Access to the best properties in the most desirable neighborhoods and prime locations.</p>
+                    </div>
+
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Our dedicated team is available round the clock to assist you with all your real estate
+                            needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Client Testimonials</h2>
+                    <p>What our clients say about our services</p>
+                </div>
+
+                <div class="testimonials-slider">
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            "Dalwara helped us find our dream home in just 3 weeks! Their team was professional,
+                            knowledgeable, and made the entire process seamless."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client"
+                                class="author-avatar">
+                            <div>
+                                <h4>Robert Johnson</h4>
+                                <p>Home Buyer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section class="contact-cta">
+            <div class="container">
+                <h2>Ready to Find Your Dream Property?</h2>
+                <p>Contact our expert team today for personalized assistance with buying, selling, or renting
+                    properties.</p>
+                <a href="contact.html" class="btn">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Dalwara<span>Estates</span></div>
+                    <p>Dalwara Real Estate has been helping clients find their perfect properties for over 15 years. We
+                        specialize in residential and commercial properties with a commitment to exceptional service.
+                    </p>
+                    <div style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="properties.html">Properties</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Street, City Center, 10001</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@dalwaraestates.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Dalwara Real Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
