@@ -34,7 +34,7 @@
 
         /* Quick Search */
         .quick-search-container {
-            margin-bottom: 100px;
+            margin-bottom: -60px;
         }
 
         .quick-search {
@@ -71,12 +71,126 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Property Cards Layout for Homepage */
+        /* Featured Properties Grid View */
+        .featured-properties {
+            padding: 80px 0;
+        }
+
         .featured-properties .properties-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-bottom: 40px;
+        }
+
+        .featured-properties .property-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-properties .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-properties .property-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .featured-properties .property-card:hover .property-img {
+            transform: scale(1.05);
+        }
+
+        .featured-properties .property-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-properties .property-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .featured-properties .property-badge.sale {
+            background-color: #2ecc71;
+        }
+
+        .featured-properties .property-badge.featured {
+            background-color: #e74c3c;
+        }
+
+        .featured-properties .property-price {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .featured-properties .property-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .featured-properties .property-location {
+            color: var(--gray);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .featured-properties .property-description {
+            margin-bottom: 20px;
+            color: var(--gray);
+            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .featured-properties .property-features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .featured-properties .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .featured-properties .feature i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .featured-properties .feature span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dark);
         }
 
         /* Company Highlights */
@@ -172,6 +286,12 @@
         }
 
         /* Responsive for Homepage */
+        @media (max-width: 992px) {
+            .featured-properties .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -179,6 +299,15 @@
 
             .search-form {
                 grid-template-columns: 1fr;
+            }
+
+            .featured-properties .properties-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .featured-properties .property-img {
+                height: 200px;
             }
         }
 
@@ -206,6 +335,10 @@
             .highlight-card,
             .testimonial {
                 padding: 25px 15px;
+            }
+
+            .featured-properties .property-content {
+                padding: 20px;
             }
         }
     </style>
@@ -303,7 +436,7 @@
         </section>
 
         <!-- Featured Properties -->
-        <section>
+        <section class="featured-properties">
             <div class="container">
                 <div class="section-title">
                     <h2>Featured Properties</h2>
@@ -313,16 +446,18 @@
                 <div class="properties-grid">
                     <!-- Property 1 -->
                     <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="Modern Villa" class="property-img">
                         <div class="property-content">
-                            <h3>Modern Luxury Villa</h3>
+                            <span class="property-badge sale">For Sale</span>
+                            <span class="property-badge featured">Featured</span>
+                            <h3 class="property-title">Modern Luxury Villa</h3>
                             <div class="property-price">$850,000</div>
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i> Downtown, Prime Location
                             </div>
-                            <p>Spacious 4-bedroom villa with modern amenities, swimming pool, and garden in a gated
-                                community.</p>
+                            <p class="property-description">Spacious 4-bedroom villa with modern amenities, swimming
+                                pool, and garden in a gated community.</p>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
@@ -342,16 +477,17 @@
 
                     <!-- Property 2 -->
                     <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="City Apartment" class="property-img">
                         <div class="property-content">
-                            <h3>City Center Apartment</h3>
+                            <span class="property-badge sale">For Sale</span>
+                            <h3 class="property-title">City Center Apartment</h3>
                             <div class="property-price">$450,000</div>
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i> City Center
                             </div>
-                            <p>Modern 2-bedroom apartment with stunning city views, balcony, and access to gym and pool
-                                facilities.</p>
+                            <p class="property-description">Modern 2-bedroom apartment with stunning city views,
+                                balcony, and access to gym and pool facilities.</p>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
@@ -371,16 +507,17 @@
 
                     <!-- Property 3 -->
                     <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                             alt="Suburban House" class="property-img">
                         <div class="property-content">
-                            <h3>Suburban Family Home</h3>
+                            <span class="property-badge sale">For Sale</span>
+                            <h3 class="property-title">Suburban Family Home</h3>
                             <div class="property-price">$625,000</div>
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i> Green Suburbs
                             </div>
-                            <p>Charming 3-bedroom house with large backyard, garage, and recently renovated kitchen and
-                                bathrooms.</p>
+                            <p class="property-description">Charming 3-bedroom house with large backyard, garage, and
+                                recently renovated kitchen and bathrooms.</p>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
