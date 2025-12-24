@@ -285,6 +285,152 @@
             opacity: 0.9;
         }
 
+        /* Property Inquiry Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            display: flex;
+        }
+
+        .inquiry-popup {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: slideUp 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .popup-header h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .close-popup {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-popup:hover {
+            color: var(--secondary);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+
+        .popup-form .form-group {
+            margin-bottom: 8px;
+        }
+
+        .popup-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .popup-form label span {
+            color: #e74c3c;
+        }
+
+        .popup-form input,
+        .popup-form select,
+        .popup-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .popup-form input:focus,
+        .popup-form select:focus,
+        .popup-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.1);
+        }
+
+        .popup-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .popup-submit-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .popup-note {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
         /* Responsive for Homepage */
         @media (max-width: 992px) {
             .featured-properties .properties-grid {
@@ -308,6 +454,11 @@
 
             .featured-properties .property-img {
                 height: 200px;
+            }
+
+            .inquiry-popup {
+                width: 95%;
+                padding: 25px 20px;
             }
         }
 
@@ -340,16 +491,77 @@
             .featured-properties .property-content {
                 padding: 20px;
             }
+
+            .popup-header h3 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Property Inquiry Popup -->
+    <div class="popup-overlay" id="inquiryPopup">
+        <div class="inquiry-popup">
+            <div class="popup-header">
+                <h3>Property Inquiry</h3>
+                <button class="close-popup" id="closePopup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+
+            <form class="popup-form" id="popupInquiryForm">
+                <input type="hidden" id="popupPropertyName" value="Modern Luxury Villa">
+                <input type="hidden" id="popupPropertyId" value="PROP001">
+
+                <div class="form-group">
+                    <label for="popupFullName">Full Name <span>*</span></label>
+                    <input type="text" id="popupFullName" name="fullName" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="popupPhone">Phone Number <span>*</span></label>
+                    <input type="tel" id="popupPhone" name="phone" required placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="popupEmail">Email Address</label>
+                    <input type="email" id="popupEmail" name="email" placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                    <label for="popupContactTime">Preferred Contact Time</label>
+                    <select id="popupContactTime" name="contactTime">
+                        <option value="">Select preferred time</option>
+                        <option value="morning">Morning (9 AM - 12 PM)</option>
+                        <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+                        <option value="evening">Evening (4 PM - 7 PM)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="popupMessage">Message / Requirements</label>
+                    <textarea id="popupMessage" name="message"
+                        placeholder="Tell us about your requirements, questions, or specific needs regarding this property..."></textarea>
+                </div>
+
+                <button type="submit" class="btn popup-submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send Inquiry
+                </button>
+
+                <div class="popup-note">
+                    Our representative will contact you within 24 hours
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">D</div>
+            <a href="/" class="logo">
+                <img src="assets/logo1.png" alt="Dalwara Estates Logo" class="logo-img">
                 <div class="logo-text">Dalwara<span>Estates</span></div>
             </a>
 
@@ -359,7 +571,7 @@
 
             <nav id="mainNav">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="/" class="active">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="properties.html">Properties</a></li>
                     <li><a href="services.html">Services</a></li>
@@ -411,9 +623,9 @@
                             <label for="price-range">Price Range</label>
                             <select id="price-range">
                                 <option value="any">Any Price</option>
-                                <option value="low">Under $200,000</option>
-                                <option value="medium">$200,000 - $500,000</option>
-                                <option value="high">$500,000+</option>
+                                <option value="low">Under ₹22,00,000</option>
+                                <option value="medium">₹29,00,000 - ₹59,00,000</option>
+                                <option value="high">₹59,00,000+</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -452,7 +664,7 @@
                             <span class="property-badge sale">For Sale</span>
                             <span class="property-badge featured">Featured</span>
                             <h3 class="property-title">Modern Luxury Villa</h3>
-                            <div class="property-price">$850,000</div>
+                            <div class="property-price">₹98,50,000</div>
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i> Downtown, Prime Location
                             </div>
@@ -482,7 +694,7 @@
                         <div class="property-content">
                             <span class="property-badge sale">For Sale</span>
                             <h3 class="property-title">City Center Apartment</h3>
-                            <div class="property-price">$450,000</div>
+                            <div class="property-price">₹34,50,000</div>
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i> City Center
                             </div>
@@ -512,7 +724,7 @@
                         <div class="property-content">
                             <span class="property-badge sale">For Sale</span>
                             <h3 class="property-title">Suburban Family Home</h3>
-                            <div class="property-price">$625,000</div>
+                            <div class="property-price">₹16,25,000</div>
                             <div class="property-location">
                                 <i class="fas fa-map-marker-alt"></i> Green Suburbs
                             </div>
@@ -647,7 +859,7 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="properties.html">Properties</a></li>
                         <li><a href="services.html">Services</a></li>
@@ -671,6 +883,7 @@
     </footer>
 
     <script src="js/script.js"></script>
+   
 </body>
 
 </html>

@@ -166,10 +166,26 @@ header {
     font-weight: 700;
     color: var(--primary);
 }
-
 .logo-text span {
     color: var(--secondary);
 }
+/* -------------------------------------------------Logo css png */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 50px;
+    height: auto;
+    border-radius: 20px;
+}
+
+
+
+
 
 /* Navigation */
 nav ul {

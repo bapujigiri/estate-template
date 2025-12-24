@@ -318,3 +318,83 @@ if (faqQuestions.length > 0) {
     // Open first FAQ by default
     faqQuestions[0].click();
 }
+
+
+//                          PopUp Modal Functions
+// Property Inquiry Popup Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const inquiryPopup = document.getElementById('inquiryPopup');
+    const closePopup = document.getElementById('closePopup');
+    const popupInquiryForm = document.getElementById('popupInquiryForm');
+
+    // Show popup after 3 seconds
+    setTimeout(function () {
+        inquiryPopup.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }, 4000);
+
+    // Close popup when clicking close button
+    closePopup.addEventListener('click', function () {
+        inquiryPopup.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Close popup when clicking outside the popup
+    inquiryPopup.addEventListener('click', function (e) {
+        if (e.target === inquiryPopup) {
+            inquiryPopup.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    });
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && inquiryPopup.classList.contains('active')) {
+            inquiryPopup.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+    });
+
+    // Popup form submission
+    popupInquiryForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form values
+        const fullName = document.getElementById('popupFullName').value;
+        const phone = document.getElementById('popupPhone').value;
+        const email = document.getElementById('popupEmail').value;
+        const contactTime = document.getElementById('popupContactTime').value;
+        const message = document.getElementById('popupMessage').value;
+
+        // Format contact time for display
+        let contactTimeDisplay = 'Not specified';
+        if (contactTime) {
+            const timeMap = {
+                'morning': 'Morning (9 AM - 12 PM)',
+                'afternoon': 'Afternoon (12 PM - 4 PM)',
+                'evening': 'Evening (4 PM - 7 PM)'
+            };
+            contactTimeDisplay = timeMap[contactTime] || contactTime;
+        }
+
+        // Show success message
+        alert(`Thank you ${fullName}! Your property inquiry has been submitted successfully.\n\nWe will contact you at ${phone} ${email ? 'or ' + email : ''} during ${contactTimeDisplay.toLowerCase()}.\n\nOur representative will get in touch with you within 24 hours.`);
+
+        // Reset form
+        popupInquiryForm.reset();
+
+        // Close popup
+        inquiryPopup.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Store popup state in localStorage to show only once per session
+    const popupShown = sessionStorage.getItem('inquiryPopupShown');
+    if (popupShown) {
+        // Don't show popup automatically if already shown in this session
+        clearTimeout(popupTimeout);
+    } else {
+        // Mark as shown for this session
+        sessionStorage.setItem('inquiryPopupShown', 'true');
+    }
+});
