@@ -1,889 +1,963 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dalwara Real Estate | Find Your Dream Property</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 150px 0;
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 150px 0;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        opacity: 0.9;
+      }
+
+      /* Quick Search */
+      .quick-search-container {
+        margin-bottom: -60px;
+      }
+
+      .quick-search {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        margin-top: -80px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .search-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-group label {
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--primary);
+      }
+
+      .form-group select {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Featured Properties Grid View */
+      .featured-properties {
+        padding: 80px 0;
+      }
+
+      .featured-properties .properties-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .featured-properties .property-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .featured-properties .property-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .featured-properties .property-img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .featured-properties .property-card:hover .property-img {
+        transform: scale(1.05);
+      }
+
+      .featured-properties .property-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .featured-properties .property-badge {
+        display: inline-block;
+        padding: 5px 12px;
+        background-color: var(--secondary);
+        color: white;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        align-self: flex-start;
+      }
+
+      .featured-properties .property-badge.sale {
+        background-color: #2ecc71;
+      }
+
+      .featured-properties .property-badge.featured {
+        background-color: #e74c3c;
+      }
+
+      .featured-properties .property-price {
+        color: var(--secondary);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .featured-properties .property-title {
+        color: var(--primary);
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+
+      .featured-properties .property-location {
+        color: var(--gray);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .featured-properties .property-description {
+        margin-bottom: 20px;
+        color: var(--gray);
+        flex-grow: 1;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .featured-properties .property-features {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--light-gray);
+      }
+
+      .featured-properties .feature {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .featured-properties .feature i {
+        color: var(--primary);
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .featured-properties .feature span {
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      /* Company Highlights */
+      .highlights {
+        background-color: #f9f9f9;
+      }
+
+      .highlights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .highlight-card {
+        text-align: center;
+        padding: 30px 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
+
+      .highlight-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .highlight-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(26, 82, 118, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
+
+      /* Testimonials */
+      .testimonials-slider {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .testimonial {
+        background-color: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .testimonial-text {
+        font-size: 1.1rem;
+        font-style: italic;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .author-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* Contact CTA */
+      .contact-cta {
+        background-color: var(--primary);
+        color: white;
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .contact-cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .contact-cta p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        opacity: 0.9;
+      }
+
+      /* Property Inquiry Popup */
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .popup-overlay.active {
+        display: flex;
+      }
+
+      .inquiry-popup {
+        background-color: white;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+        animation: slideUp 0.4s ease;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+        border-bottom: 2px solid var(--light-gray);
+      }
+
+      .popup-header h3 {
+        color: var(--primary);
+        font-size: 1.5rem;
+        margin: 0;
+      }
+
+      .close-popup {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--gray);
+        cursor: pointer;
+        transition: var(--transition);
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .close-popup:hover {
+        color: var(--secondary);
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      .popup-form .form-group {
+        margin-bottom: 8px;
+      }
+
+      .popup-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: var(--primary);
+        font-size: 0.9rem;
+      }
+
+      .popup-form label span {
+        color: #e74c3c;
+      }
+
+      .popup-form input,
+      .popup-form select,
+      .popup-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Poppins", sans-serif;
+        transition: var(--transition);
+      }
+
+      .popup-form input:focus,
+      .popup-form select:focus,
+      .popup-form textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.1);
+      }
+
+      .popup-form textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .popup-submit-btn {
+        width: 100%;
+        margin-top: 10px;
+        padding: 14px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .popup-note {
+        font-size: 0.85rem;
+        color: var(--gray);
+        text-align: center;
+        margin-top: 15px;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
         }
 
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Responsive for Homepage */
+      @media (max-width: 992px) {
+        .featured-properties .properties-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        /* Quick Search */
-        .quick-search-container {
-            margin-bottom: -60px;
-        }
-
-        .quick-search {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-            margin-top: -80px;
-            position: relative;
-            z-index: 10;
+          font-size: 2.5rem;
         }
 
         .search-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .form-group select {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Featured Properties Grid View */
-        .featured-properties {
-            padding: 80px 0;
+          grid-template-columns: 1fr;
         }
 
         .featured-properties .properties-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .featured-properties .property-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .featured-properties .property-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+          grid-template-columns: 1fr;
+          gap: 25px;
         }
 
         .featured-properties .property-img {
-            height: 220px;
-            width: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .featured-properties .property-card:hover .property-img {
-            transform: scale(1.05);
-        }
-
-        .featured-properties .property-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .featured-properties .property-badge {
-            display: inline-block;
-            padding: 5px 12px;
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            align-self: flex-start;
-        }
-
-        .featured-properties .property-badge.sale {
-            background-color: #2ecc71;
-        }
-
-        .featured-properties .property-badge.featured {
-            background-color: #e74c3c;
-        }
-
-        .featured-properties .property-price {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .featured-properties .property-title {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .featured-properties .property-location {
-            color: var(--gray);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .featured-properties .property-description {
-            margin-bottom: 20px;
-            color: var(--gray);
-            flex-grow: 1;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .featured-properties .property-features {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--light-gray);
-        }
-
-        .featured-properties .feature {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .featured-properties .feature i {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .featured-properties .feature span {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-
-        /* Company Highlights */
-        .highlights {
-            background-color: #f9f9f9;
-        }
-
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .highlight-card {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .highlight-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(26, 82, 118, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        /* Testimonials */
-        .testimonials-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial {
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        /* Contact CTA */
-        .contact-cta {
-            background-color: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .contact-cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        /* Property Inquiry Popup */
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .popup-overlay.active {
-            display: flex;
+          height: 200px;
         }
 
         .inquiry-popup {
-            background-color: white;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            position: relative;
-            animation: slideUp 0.4s ease;
-            max-height: 90vh;
-            overflow-y: auto;
+          width: 95%;
+          padding: 25px 20px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          padding: 120px 0;
         }
 
-        .popup-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
-            padding-bottom: 6px;
-            border-bottom: 2px solid var(--light-gray);
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .quick-search {
+          padding: 20px;
+        }
+
+        .contact-cta h2 {
+          font-size: 2rem;
+        }
+
+        .testimonial {
+          padding: 30px 20px;
+        }
+
+        .highlight-card,
+        .testimonial {
+          padding: 25px 15px;
+        }
+
+        .featured-properties .property-content {
+          padding: 20px;
         }
 
         .popup-header h3 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin: 0;
+          font-size: 1.3rem;
         }
-
-        .close-popup {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .close-popup:hover {
-            color: var(--secondary);
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-
-        .popup-form .form-group {
-            margin-bottom: 8px;
-        }
-
-        .popup-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-
-        .popup-form label span {
-            color: #e74c3c;
-        }
-
-        .popup-form input,
-        .popup-form select,
-        .popup-form textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-
-        .popup-form input:focus,
-        .popup-form select:focus,
-        .popup-form textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.1);
-        }
-
-        .popup-form textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .popup-submit-btn {
-            width: 100%;
-            margin-top: 10px;
-            padding: 14px;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .popup-note {
-            font-size: 0.85rem;
-            color: var(--gray);
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Responsive for Homepage */
-        @media (max-width: 992px) {
-            .featured-properties .properties-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .search-form {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-properties .properties-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .featured-properties .property-img {
-                height: 200px;
-            }
-
-            .inquiry-popup {
-                width: 95%;
-                padding: 25px 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 120px 0;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .quick-search {
-                padding: 20px;
-            }
-
-            .contact-cta h2 {
-                font-size: 2rem;
-            }
-
-            .testimonial {
-                padding: 30px 20px;
-            }
-
-            .highlight-card,
-            .testimonial {
-                padding: 25px 15px;
-            }
-
-            .featured-properties .property-content {
-                padding: 20px;
-            }
-
-            .popup-header h3 {
-                font-size: 1.3rem;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Property Inquiry Popup -->
     <div class="popup-overlay" id="inquiryPopup">
-        <div class="inquiry-popup">
-            <div class="popup-header">
-                <h3>Property Inquiry</h3>
-                <button class="close-popup" id="closePopup">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-
-            <form class="popup-form" id="popupInquiryForm">
-                <input type="hidden" id="popupPropertyName" value="Modern Luxury Villa">
-                <input type="hidden" id="popupPropertyId" value="PROP001">
-
-                <div class="form-group">
-                    <label for="popupFullName">Full Name <span>*</span></label>
-                    <input type="text" id="popupFullName" name="fullName" required placeholder="Enter your full name">
-                </div>
-
-                <div class="form-group">
-                    <label for="popupPhone">Phone Number <span>*</span></label>
-                    <input type="tel" id="popupPhone" name="phone" required placeholder="Enter your phone number">
-                </div>
-
-                <div class="form-group">
-                    <label for="popupEmail">Email Address</label>
-                    <input type="email" id="popupEmail" name="email" placeholder="Enter your email address">
-                </div>
-
-                <div class="form-group">
-                    <label for="popupContactTime">Preferred Contact Time</label>
-                    <select id="popupContactTime" name="contactTime">
-                        <option value="">Select preferred time</option>
-                        <option value="morning">Morning (9 AM - 12 PM)</option>
-                        <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
-                        <option value="evening">Evening (4 PM - 7 PM)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="popupMessage">Message / Requirements</label>
-                    <textarea id="popupMessage" name="message"
-                        placeholder="Tell us about your requirements, questions, or specific needs regarding this property..."></textarea>
-                </div>
-
-                <button type="submit" class="btn popup-submit-btn">
-                    <i class="fas fa-paper-plane"></i> Send Inquiry
-                </button>
-
-                <div class="popup-note">
-                    Our representative will contact you within 24 hours
-                </div>
-            </form>
+      <div class="inquiry-popup">
+        <div class="popup-header">
+          <h3>Property Inquiry</h3>
+          <button class="close-popup" id="closePopup">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
+
+        <form class="popup-form" id="popupInquiryForm">
+          <input
+            type="hidden"
+            id="popupPropertyName"
+            value="Modern Luxury Villa"
+          />
+          <input type="hidden" id="popupPropertyId" value="PROP001" />
+
+          <div class="form-group">
+            <label for="popupFullName">Full Name <span>*</span></label>
+            <input
+              type="text"
+              id="popupFullName"
+              name="fullName"
+              required
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="popupPhone">Phone Number <span>*</span></label>
+            <input
+              type="tel"
+              id="popupPhone"
+              name="phone"
+              required
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="popupEmail">Email Address</label>
+            <input
+              type="email"
+              id="popupEmail"
+              name="email"
+              placeholder="Enter your email address"
+            />
+          </div> -->
+
+          <div class="form-group">
+            <label for="popupContactTime">Preferred Contact Time</label>
+            <select id="popupContactTime" name="contactTime">
+              <option value="">Select preferred time</option>
+              <option value="morning">Morning (9 AM - 12 PM)</option>
+              <option value="afternoon">Afternoon (12 PM - 4 PM)</option>
+              <option value="evening">Evening (4 PM - 7 PM)</option>
+            </select>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="popupMessage">Message / Requirements</label>
+            <textarea
+              id="popupMessage"
+              name="message"
+              placeholder="Tell us about your requirements, questions, or specific needs regarding this property..."
+            ></textarea>
+          </div> -->
+
+          <button type="submit" class="btn popup-submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Inquiry
+          </button>
+
+          <div class="popup-note">
+            Our representative will contact you within 24 hours
+          </div>
+        </form>
+      </div>
     </div>
 
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="/estate-template/" class="logo">
-                <img src="assets/logo1.png" alt="Dalwara Estates Logo" class="logo-img">
-                <div class="logo-text">Dalwara<span>Estates</span></div>
-            </a>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <img
+            src="assets/logo1new.png"
+            alt="Dalwara Estates Logo"
+            class="logo-img"
+          />
+          <!-- <div class="logo-text">Dalwara<span>Estates</span></div> -->
+        </a>
 
-            <div class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="/estate-template/" class="active">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="properties.html">Properties</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
         </div>
+
+        <nav id="mainNav">
+          <ul>
+            <!-- <li><a href="/estate-template/" class="active">Home</a></li> -->
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Main Content -->
     <main id="content">
-        <!-- Homepage Content -->
-        <section class="hero">
-            <div class="container">
-                <h1>Find Your Dream Property with Dalwara</h1>
-                <p>Discover the perfect home, investment property, or commercial space with our expert real estate
-                    services. We've been helping clients find their ideal properties for over 15 years.</p>
-                <a href="properties.html" class="btn">Browse Properties</a>
+      <!-- Homepage Content -->
+      <section class="hero">
+        <div class="container">
+          <h1>Find Your Dream Property with Dalwara</h1>
+          <p>
+            Discover the perfect home, investment property, or commercial space
+            with our expert real estate services. We've been helping clients
+            find their ideal properties for over 15 years.
+          </p>
+          <a href="properties.html" class="btn">Browse Properties</a>
+        </div>
+      </section>
+
+      <!-- Quick Search -->
+      <section class="quick-search-container">
+        <div class="container">
+          <div class="quick-search">
+            <h3>Find Your Property</h3>
+            <form class="search-form">
+              <div class="form-group">
+                <label for="property-type">Property Type</label>
+                <select id="property-type">
+                  <option value="any">Any Type</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="villa">Villa</option>
+                  <option value="office">Office</option>
+                  <option value="land">Land</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <select id="location">
+                  <option value="any">Any Location</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="suburbs">Suburbs</option>
+                  <option value="coastal">Coastal Area</option>
+                  <option value="rural">Rural Area</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="price-range">Price Range</label>
+                <select id="price-range">
+                  <option value="any">Any Price</option>
+                  <option value="low">Under ₹22,00,000</option>
+                  <option value="medium">₹29,00,000 - ₹59,00,000</option>
+                  <option value="high">₹59,00,000+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="bedrooms">Bedrooms</label>
+                <select id="bedrooms">
+                  <option value="any">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>&nbsp;</label>
+                <button type="submit" class="btn btn-primary">
+                  Search Properties
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Properties -->
+      <section class="featured-properties">
+        <div class="container">
+          <div class="section-title">
+            <h2>Featured Properties</h2>
+            <p>Explore our handpicked selection of premium properties</p>
+          </div>
+
+          <div class="properties-grid">
+            <!-- Property 1 -->
+            <div class="property-card">
+              <img
+                src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Modern Villa"
+                class="property-img"
+              />
+              <div class="property-content">
+                <span class="property-badge sale">For Sale</span>
+                <span class="property-badge featured">Featured</span>
+                <h3 class="property-title">Modern Luxury Villa</h3>
+                <div class="property-price">₹98,50,000</div>
+                <div class="property-location">
+                  <i class="fas fa-map-marker-alt"></i> Downtown, Prime Location
+                </div>
+                <p class="property-description">
+                  Spacious 4-bedroom villa with modern amenities, swimming pool,
+                  and garden in a gated community.
+                </p>
+                <div class="property-features">
+                  <div class="feature">
+                    <i class="fas fa-bed"></i>
+                    <span>4 Beds</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-bath"></i>
+                    <span>3 Baths</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-ruler-combined"></i>
+                    <span>3200 sqft</span>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
 
-        <!-- Quick Search -->
-        <section class="quick-search-container">
-            <div class="container">
-                <div class="quick-search">
-                    <h3>Find Your Property</h3>
-                    <form class="search-form">
-                        <div class="form-group">
-                            <label for="property-type">Property Type</label>
-                            <select id="property-type">
-                                <option value="any">Any Type</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="villa">Villa</option>
-                                <option value="office">Office</option>
-                                <option value="land">Land</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <select id="location">
-                                <option value="any">Any Location</option>
-                                <option value="downtown">Downtown</option>
-                                <option value="suburbs">Suburbs</option>
-                                <option value="coastal">Coastal Area</option>
-                                <option value="rural">Rural Area</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="price-range">Price Range</label>
-                            <select id="price-range">
-                                <option value="any">Any Price</option>
-                                <option value="low">Under ₹22,00,000</option>
-                                <option value="medium">₹29,00,000 - ₹59,00,000</option>
-                                <option value="high">₹59,00,000+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="bedrooms">Bedrooms</label>
-                            <select id="bedrooms">
-                                <option value="any">Any</option>
-                                <option value="1">1+</option>
-                                <option value="2">2+</option>
-                                <option value="3">3+</option>
-                                <option value="4">4+</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>&nbsp;</label>
-                            <button type="submit" class="btn btn-primary">Search Properties</button>
-                        </div>
-                    </form>
+            <!-- Property 2 -->
+            <div class="property-card">
+              <img
+                src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="City Apartment"
+                class="property-img"
+              />
+              <div class="property-content">
+                <span class="property-badge sale">For Sale</span>
+                <h3 class="property-title">City Center Apartment</h3>
+                <div class="property-price">₹34,50,000</div>
+                <div class="property-location">
+                  <i class="fas fa-map-marker-alt"></i> City Center
                 </div>
+                <p class="property-description">
+                  Modern 2-bedroom apartment with stunning city views, balcony,
+                  and access to gym and pool facilities.
+                </p>
+                <div class="property-features">
+                  <div class="feature">
+                    <i class="fas fa-bed"></i>
+                    <span>2 Beds</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-bath"></i>
+                    <span>2 Baths</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-ruler-combined"></i>
+                    <span>1200 sqft</span>
+                  </div>
+                </div>
+              </div>
             </div>
-        </section>
 
-        <!-- Featured Properties -->
-        <section class="featured-properties">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Featured Properties</h2>
-                    <p>Explore our handpicked selection of premium properties</p>
+            <!-- Property 3 -->
+            <div class="property-card">
+              <img
+                src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                alt="Suburban House"
+                class="property-img"
+              />
+              <div class="property-content">
+                <span class="property-badge sale">For Sale</span>
+                <h3 class="property-title">Suburban Family Home</h3>
+                <div class="property-price">₹16,25,000</div>
+                <div class="property-location">
+                  <i class="fas fa-map-marker-alt"></i> Green Suburbs
                 </div>
-
-                <div class="properties-grid">
-                    <!-- Property 1 -->
-                    <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Modern Villa" class="property-img">
-                        <div class="property-content">
-                            <span class="property-badge sale">For Sale</span>
-                            <span class="property-badge featured">Featured</span>
-                            <h3 class="property-title">Modern Luxury Villa</h3>
-                            <div class="property-price">₹98,50,000</div>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt"></i> Downtown, Prime Location
-                            </div>
-                            <p class="property-description">Spacious 4-bedroom villa with modern amenities, swimming
-                                pool, and garden in a gated community.</p>
-                            <div class="property-features">
-                                <div class="feature">
-                                    <i class="fas fa-bed"></i>
-                                    <span>4 Beds</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-bath"></i>
-                                    <span>3 Baths</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-ruler-combined"></i>
-                                    <span>3200 sqft</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Property 2 -->
-                    <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="City Apartment" class="property-img">
-                        <div class="property-content">
-                            <span class="property-badge sale">For Sale</span>
-                            <h3 class="property-title">City Center Apartment</h3>
-                            <div class="property-price">₹34,50,000</div>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt"></i> City Center
-                            </div>
-                            <p class="property-description">Modern 2-bedroom apartment with stunning city views,
-                                balcony, and access to gym and pool facilities.</p>
-                            <div class="property-features">
-                                <div class="feature">
-                                    <i class="fas fa-bed"></i>
-                                    <span>2 Beds</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-bath"></i>
-                                    <span>2 Baths</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-ruler-combined"></i>
-                                    <span>1200 sqft</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Property 3 -->
-                    <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Suburban House" class="property-img">
-                        <div class="property-content">
-                            <span class="property-badge sale">For Sale</span>
-                            <h3 class="property-title">Suburban Family Home</h3>
-                            <div class="property-price">₹16,25,000</div>
-                            <div class="property-location">
-                                <i class="fas fa-map-marker-alt"></i> Green Suburbs
-                            </div>
-                            <p class="property-description">Charming 3-bedroom house with large backyard, garage, and
-                                recently renovated kitchen and bathrooms.</p>
-                            <div class="property-features">
-                                <div class="feature">
-                                    <i class="fas fa-bed"></i>
-                                    <span>3 Beds</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-bath"></i>
-                                    <span>2.5 Baths</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-ruler-combined"></i>
-                                    <span>2100 sqft</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <p class="property-description">
+                  Charming 3-bedroom house with large backyard, garage, and
+                  recently renovated kitchen and bathrooms.
+                </p>
+                <div class="property-features">
+                  <div class="feature">
+                    <i class="fas fa-bed"></i>
+                    <span>3 Beds</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-bath"></i>
+                    <span>2.5 Baths</span>
+                  </div>
+                  <div class="feature">
+                    <i class="fas fa-ruler-combined"></i>
+                    <span>2100 sqft</span>
+                  </div>
                 </div>
-
-                <div style="text-align: center; margin-top: 40px;">
-                    <a href="properties.html" class="btn btn-primary">View All Properties</a>
-                </div>
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Company Highlights -->
-        <section class="highlights">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Why Choose Dalwara</h2>
-                    <p>We provide exceptional real estate services with a commitment to excellence</p>
-                </div>
+          <div style="text-align: center; margin-top: 40px">
+            <a href="properties.html" class="btn btn-primary"
+              >View All Properties</a
+            >
+          </div>
+        </div>
+      </section>
 
-                <div class="highlights-grid">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>15+ Years Experience</h3>
-                        <p>With over 15 years in the real estate industry, we have the expertise to help you find your
-                            perfect property.</p>
-                    </div>
+      <!-- Company Highlights -->
+      <section class="highlights">
+        <div class="container">
+          <div class="section-title">
+            <h2>Why Choose Dalwara</h2>
+            <p>
+              We provide exceptional real estate services with a commitment to
+              excellence
+            </p>
+          </div>
 
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Trusted by Clients</h3>
-                        <p>We've helped thousands of clients find their dream homes and investment properties with
-                            satisfaction.</p>
-                    </div>
-
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-map-marked-alt"></i>
-                        </div>
-                        <h3>Prime Locations</h3>
-                        <p>Access to the best properties in the most desirable neighborhoods and prime locations.</p>
-                    </div>
-
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <h3>24/7 Support</h3>
-                        <p>Our dedicated team is available round the clock to assist you with all your real estate
-                            needs.</p>
-                    </div>
-                </div>
+          <div class="highlights-grid">
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <h3>15+ Years Experience</h3>
+              <p>
+                With over 15 years in the real estate industry, we have the
+                expertise to help you find your perfect property.
+              </p>
             </div>
-        </section>
 
-        <!-- Testimonials -->
-        <section>
-            <div class="container">
-                <div class="section-title">
-                    <h2>Client Testimonials</h2>
-                    <p>What our clients say about our services</p>
-                </div>
-
-                <div class="testimonials-slider">
-                    <div class="testimonial">
-                        <div class="testimonial-text">
-                            "Dalwara helped us find our dream home in just 3 weeks! Their team was professional,
-                            knowledgeable, and made the entire process seamless."
-                        </div>
-                        <div class="testimonial-author">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client"
-                                class="author-avatar">
-                            <div>
-                                <h4>Robert Johnson</h4>
-                                <p>Home Buyer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h3>Trusted by Clients</h3>
+              <p>
+                We've helped thousands of clients find their dream homes and
+                investment properties with satisfaction.
+              </p>
             </div>
-        </section>
 
-        <!-- Contact CTA -->
-        <section class="contact-cta">
-            <div class="container">
-                <h2>Ready to Find Your Dream Property?</h2>
-                <p>Contact our expert team today for personalized assistance with buying, selling, or renting
-                    properties.</p>
-                <a href="contact.html" class="btn">Get in Touch</a>
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <i class="fas fa-map-marked-alt"></i>
+              </div>
+              <h3>Prime Locations</h3>
+              <p>
+                Access to the best properties in the most desirable
+                neighborhoods and prime locations.
+              </p>
             </div>
-        </section>
+
+            <div class="highlight-card">
+              <div class="highlight-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <h3>24/7 Support</h3>
+              <p>
+                Our dedicated team is available round the clock to assist you
+                with all your real estate needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section>
+        <div class="container">
+          <div class="section-title">
+            <h2>Client Testimonials</h2>
+            <p>What our clients say about our services</p>
+          </div>
+
+          <div class="testimonials-slider">
+            <div class="testimonial">
+              <div class="testimonial-text">
+                "Dalwara helped us find our dream home in just 3 weeks! Their
+                team was professional, knowledgeable, and made the entire
+                process seamless."
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Client"
+                  class="author-avatar"
+                />
+                <div>
+                  <h4>Robert Johnson</h4>
+                  <p>Home Buyer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact CTA -->
+      <section class="contact-cta">
+        <div class="container">
+          <h2>Ready to Find Your Dream Property?</h2>
+          <p>
+            Contact our expert team today for personalized assistance with
+            buying, selling, or renting properties.
+          </p>
+          <a href="contact.html" class="btn">Get in Touch</a>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Dalwara<span>Estates</span></div>
-                    <p>Dalwara Real Estate has been helping clients find their perfect properties for over 15 years. We
-                        specialize in residential and commercial properties with a commitment to exceptional service.
-                    </p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="properties.html">Properties</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Street, City Center, 10001</p>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    <p><i class="fas fa-envelope"></i> info@dalwaraestates.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <div class="footer-logo">Dalwara<span>Estates</span></div>
+            <p>
+              Dalwara Real Estate has been helping clients find their perfect
+              properties for over 15 years. We specialize in residential and
+              commercial properties with a commitment to exceptional service.
+            </p>
+            <div style="margin-top: 20px; display: flex; gap: 15px">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
+          </div>
 
-            <div class="copyright">
-                <p>&copy; 2023 Dalwara Real Estate. All rights reserved.</p>
-            </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="properties.html">Properties</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Plot No-411/2228,
+              Kantilo,Lane-3 Kalyan Vihar,Phase-1
+            </p>
+            <p><i class="fas fa-phone"></i> +91 7609869819</p>
+            <p><i class="fas fa-envelope"></i> info@dalwara.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+          </div>
         </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Dalwara Estate. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="js/script.js"></script>
-   
-</body>
-
+  </body>
 </html>

@@ -1,534 +1,596 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us | Dalwara Real Estate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* Page-specific CSS for About Page */
+      /* Page-specific CSS for About Page */
 
-        /* About Section */
+      /* About Section */
+      .about-section {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        margin-bottom: 60px;
+      }
+
+      .about-img {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .about-img:hover img {
+        transform: scale(1.05);
+      }
+
+      .about-content {
+        flex: 1;
+      }
+
+      .about-content h2 {
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .highlight-text {
+        color: var(--secondary);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin: 25px 0;
+        padding-left: 20px;
+        border-left: 3px solid var(--secondary);
+      }
+
+      /* Mission & Vision */
+      .mission-vision {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .mission-card,
+      .vision-card {
+        padding: 40px 30px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        border-left: 4px solid var(--secondary);
+        transition: var(--transition);
+      }
+
+      .mission-card:hover,
+      .vision-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .mission-card h3,
+      .vision-card h3 {
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .mission-card h3 i,
+      .vision-card h3 i {
+        color: var(--secondary);
+      }
+
+      /* Why Choose Us */
+      .why-choose-us {
+        background-color: #f9f9f9;
+      }
+
+      .reasons-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .reason-card {
+        background-color: white;
+        padding: 40px 30px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
+
+      .reason-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .reason-icon {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(26, 82, 118, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        color: var(--primary);
+        font-size: 2rem;
+      }
+
+      /* Company Achievements */
+      .achievements {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        text-align: center;
+      }
+
+      .achievement {
+        padding: 30px 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
+
+      .achievement:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .achievement h3 {
+        color: var(--secondary);
+        font-size: 2.5rem;
+        margin-bottom: 5px;
+      }
+
+      .achievement p {
+        font-weight: 500;
+        color: var(--primary);
+      }
+
+      /* Team Section */
+      .team-section {
+        background-color: #f9f9f9;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .team-member {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .team-member:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .member-img {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .member-info {
+        padding: 25px 20px;
+      }
+
+      .member-info h4 {
+        color: var(--primary);
+        margin-bottom: 5px;
+      }
+
+      .member-position {
+        color: var(--secondary);
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+            rgba(26, 82, 118, 0.9),
+            rgba(26, 82, 118, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        opacity: 0.9;
+      }
+
+      /* Responsive Styles for About Page */
+      @media (max-width: 992px) {
         .about-section {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            margin-bottom: 60px;
+          flex-direction: column;
         }
 
         .about-img {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          width: 100%;
         }
+      }
 
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-content {
-            flex: 1;
-        }
-
-        .about-content h2 {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-
-        .highlight-text {
-            color: var(--secondary);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin: 25px 0;
-            padding-left: 20px;
-            border-left: 3px solid var(--secondary);
-        }
-
-        /* Mission & Vision */
-        .mission-vision {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
+      @media (max-width: 576px) {
         .mission-card,
-        .vision-card {
-            padding: 40px 30px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            border-left: 4px solid var(--secondary);
-            transition: var(--transition);
-        }
-
-        .mission-card:hover,
-        .vision-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .mission-card h3,
-        .vision-card h3 {
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .mission-card h3 i,
-        .vision-card h3 i {
-            color: var(--secondary);
-        }
-
-        /* Why Choose Us */
-        .why-choose-us {
-            background-color: #f9f9f9;
-        }
-
-        .reasons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .reason-card {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .reason-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .reason-icon {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(26, 82, 118, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: var(--primary);
-            font-size: 2rem;
-        }
-
-        /* Company Achievements */
-        .achievements {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
+        .vision-card,
+        .reason-card,
         .achievement {
-            padding: 30px 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+          padding: 30px 20px;
         }
-
-        .achievement:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .achievement h3 {
-            color: var(--secondary);
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-        }
-
-        .achievement p {
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        /* Team Section */
-        .team-section {
-            background-color: #f9f9f9;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .team-member {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .member-img {
-            height: 250px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .member-info {
-            padding: 25px 20px;
-        }
-
-        .member-info h4 {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .member-position {
-            color: var(--secondary);
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        /* Responsive Styles for About Page */
-        @media (max-width: 992px) {
-            .about-section {
-                flex-direction: column;
-            }
-
-            .about-img {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 576px) {
-
-            .mission-card,
-            .vision-card,
-            .reason-card,
-            .achievement {
-                padding: 30px 20px;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="/" class="logo">
-                <img src="assets/logo1.png" alt="Dalwara Estates Logo" class="logo-img">
-                <div class="logo-text">Dalwara<span>Estates</span></div>
-            </a>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <img
+            src="assets/logo1new.png"
+            alt="Dalwara Estates Logo"
+            class="logo-img"
+          />
+          <!-- <div class="logo-text">Dalwara<span>Estates</span></div> -->
+        </a>
 
-            <div class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="about.html" class="active">About Us</a></li>
-                    <li><a href="properties.html">Properties</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
         </div>
+
+        <nav id="mainNav">
+          <ul>
+            <!-- <li><a href="/">Home</a></li> -->
+            <!-- <li><a href="about.html" class="active">About Us</a></li> -->
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="container">
-            <h1>About Dalwara Real Estate</h1>
-            <div class="breadcrumb">
-                <a href="/">Home</a> / <span>About Us</span>
-            </div>
+      <div class="container">
+        <h1>About Dalwara Real Estate</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> / <span>About Us</span>
         </div>
+      </div>
     </section>
 
     <!-- Company History Section -->
     <section>
-        <div class="container">
-            <div class="about-section">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Dalwara Real Estate Office">
-                </div>
-                <div class="about-content">
-                    <h2>Our Journey Since 2008</h2>
-                    <p>Dalwara Real Estate was founded in 2008 with a simple yet powerful vision: to make property
-                        transactions seamless, transparent, and rewarding for everyone involved. What started as a small
-                        family-run business has grown into one of the most trusted real estate agencies in the region.
-                    </p>
+      <div class="container">
+        <div class="about-section">
+          <div class="about-img">
+            <img
+              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Dalwara Real Estate Office"
+            />
+          </div>
+          <div class="about-content">
+            <h2>Our Journey Since 2008</h2>
+            <p>
+              Dalwara Real Estate was founded in 2008 with a simple yet powerful
+              vision: to make property transactions seamless, transparent, and
+              rewarding for everyone involved. What started as a small
+              family-run business has grown into one of the most trusted real
+              estate agencies in the region.
+            </p>
 
-                    <p>Over the past 15+ years, we've helped thousands of clients find their dream homes, secure
-                        profitable investments, and navigate the complex real estate market with confidence. Our team of
-                        dedicated professionals combines local market expertise with a global perspective to deliver
-                        exceptional results.</p>
+            <p>
+              Over the past 15+ years, we've helped thousands of clients find
+              their dream homes, secure profitable investments, and navigate the
+              complex real estate market with confidence. Our team of dedicated
+              professionals combines local market expertise with a global
+              perspective to deliver exceptional results.
+            </p>
 
-                    <div class="highlight-text">
-                        Our commitment to integrity, customer satisfaction, and market excellence has made us the
-                        preferred choice for both residential and commercial real estate needs.
-                    </div>
-
-                    <p>Today, Dalwara Real Estate stands as a testament to what can be achieved when you combine passion
-                        with professionalism. We continue to expand our services while maintaining the personal touch
-                        that our clients have come to expect from us.</p>
-                </div>
+            <div class="highlight-text">
+              Our commitment to integrity, customer satisfaction, and market
+              excellence has made us the preferred choice for both residential
+              and commercial real estate needs.
             </div>
+
+            <p>
+              Today, Dalwara Real Estate stands as a testament to what can be
+              achieved when you combine passion with professionalism. We
+              continue to expand our services while maintaining the personal
+              touch that our clients have come to expect from us.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Mission & Vision Section -->
     <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Mission & Vision</h2>
-                <p>The principles that guide everything we do</p>
-            </div>
-
-            <div class="mission-vision">
-                <div class="mission-card">
-                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
-                    <p>To empower individuals and families in achieving their property dreams by providing exceptional
-                        real estate services, market expertise, and personalized guidance throughout their property
-                        journey. We strive to build lasting relationships based on trust, transparency, and outstanding
-                        results.</p>
-                </div>
-
-                <div class="vision-card">
-                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                    <p>To become the region's most respected and innovative real estate partner, recognized for
-                        transforming property transactions into seamless, rewarding experiences. We envision a future
-                        where everyone has access to expert guidance in finding their perfect property match.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Mission & Vision</h2>
+          <p>The principles that guide everything we do</p>
         </div>
+
+        <div class="mission-vision">
+          <div class="mission-card">
+            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+            <p>
+              To empower individuals and families in achieving their property
+              dreams by providing exceptional real estate services, market
+              expertise, and personalized guidance throughout their property
+              journey. We strive to build lasting relationships based on trust,
+              transparency, and outstanding results.
+            </p>
+          </div>
+
+          <div class="vision-card">
+            <h3><i class="fas fa-eye"></i> Our Vision</h3>
+            <p>
+              To become the region's most respected and innovative real estate
+              partner, recognized for transforming property transactions into
+              seamless, rewarding experiences. We envision a future where
+              everyone has access to expert guidance in finding their perfect
+              property match.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Why Choose Us Section -->
     <section class="why-choose-us">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose Dalwara</h2>
-                <p>What sets us apart from other real estate agencies</p>
-            </div>
-
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Market Expertise</h3>
-                    <p>With over 15 years in the industry, we have unparalleled knowledge of local market trends,
-                        pricing, and investment opportunities.</p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
-                    <h3>Personalized Service</h3>
-                    <p>We treat every client as unique, offering customized solutions tailored to your specific needs,
-                        preferences, and budget.</p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Trust & Transparency</h3>
-                    <p>We believe in complete transparency in all our dealings, providing honest advice and clear
-                        communication at every step.</p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>Extensive Portfolio</h3>
-                    <p>Access to exclusive listings across residential, commercial, and investment properties in prime
-                        locations throughout the region.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Choose Dalwara</h2>
+          <p>What sets us apart from other real estate agencies</p>
         </div>
+
+        <div class="reasons-grid">
+          <div class="reason-card">
+            <div class="reason-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Market Expertise</h3>
+            <p>
+              With over 15 years in the industry, we have unparalleled knowledge
+              of local market trends, pricing, and investment opportunities.
+            </p>
+          </div>
+
+          <div class="reason-card">
+            <div class="reason-icon">
+              <i class="fas fa-user-friends"></i>
+            </div>
+            <h3>Personalized Service</h3>
+            <p>
+              We treat every client as unique, offering customized solutions
+              tailored to your specific needs, preferences, and budget.
+            </p>
+          </div>
+
+          <div class="reason-card">
+            <div class="reason-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Trust & Transparency</h3>
+            <p>
+              We believe in complete transparency in all our dealings, providing
+              honest advice and clear communication at every step.
+            </p>
+          </div>
+
+          <div class="reason-card">
+            <div class="reason-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <h3>Extensive Portfolio</h3>
+            <p>
+              Access to exclusive listings across residential, commercial, and
+              investment properties in prime locations throughout the region.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Company Achievements -->
     <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Achievements</h2>
-                <p>Milestones that reflect our commitment to excellence</p>
-            </div>
-
-            <div class="achievements">
-                <div class="achievement">
-                    <h3>2,500+</h3>
-                    <p>Properties Sold</p>
-                </div>
-
-                <div class="achievement">
-                    <h3>15+</h3>
-                    <p>Years of Experience</p>
-                </div>
-
-                <div class="achievement">
-                    <h3>98%</h3>
-                    <p>Client Satisfaction</p>
-                </div>
-
-                <div class="achievement">
-                    <h3>50+</h3>
-                    <p>Awards & Recognition</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Achievements</h2>
+          <p>Milestones that reflect our commitment to excellence</p>
         </div>
+
+        <div class="achievements">
+          <div class="achievement">
+            <h3>2,500+</h3>
+            <p>Properties Sold</p>
+          </div>
+
+          <div class="achievement">
+            <h3>15+</h3>
+            <p>Years of Experience</p>
+          </div>
+
+          <div class="achievement">
+            <h3>98%</h3>
+            <p>Client Satisfaction</p>
+          </div>
+
+          <div class="achievement">
+            <h3>50+</h3>
+            <p>Awards & Recognition</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Team Section -->
     <section class="team-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Meet Our Leadership Team</h2>
-                <p>The experienced professionals behind our success</p>
-            </div>
-
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Rajesh Kumar" class="member-img">
-                    <div class="member-info">
-                        <h4>Rajesh Kumar</h4>
-                        <p class="member-position">Founder & CEO</p>
-                        <p>With 20+ years in real estate, Rajesh founded Dalwara with a vision to revolutionize property
-                            services.</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Priya Sharma" class="member-img">
-                    <div class="member-info">
-                        <h4>Priya Sharma</h4>
-                        <p class="member-position">Director of Operations</p>
-                        <p>Priya brings 15 years of experience in property management and client relationship building.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Amit Patel" class="member-img">
-                    <div class="member-info">
-                        <h4>Amit Patel</h4>
-                        <p class="member-position">Head of Sales</p>
-                        <p>Amit leads our sales team with expertise in residential and commercial property transactions.
-                        </p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Meet Our Leadership Team</h2>
+          <p>The experienced professionals behind our success</p>
         </div>
+
+        <div class="team-grid">
+          <div class="team-member">
+            <img
+              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Rajesh Kumar"
+              class="member-img"
+            />
+            <div class="member-info">
+              <h4>Rajesh Kumar</h4>
+              <p class="member-position">Founder & CEO</p>
+              <p>
+                With 20+ years in real estate, Rajesh founded Dalwara with a
+                vision to revolutionize property services.
+              </p>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <img
+              src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Priya Sharma"
+              class="member-img"
+            />
+            <div class="member-info">
+              <h4>Priya Sharma</h4>
+              <p class="member-position">Director of Operations</p>
+              <p>
+                Priya brings 15 years of experience in property management and
+                client relationship building.
+              </p>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <img
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Amit Patel"
+              class="member-img"
+            />
+            <div class="member-info">
+              <h4>Amit Patel</h4>
+              <p class="member-position">Head of Sales</p>
+              <p>
+                Amit leads our sales team with expertise in residential and
+                commercial property transactions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Start Your Property Journey?</h2>
-            <p>Whether you're buying, selling, or investing, our team is here to guide you every step of the way.
-                Experience the Dalwara difference today.</p>
-            <a href="contact.html" class="btn">Contact Our Team</a>
-        </div>
+      <div class="container">
+        <h2>Ready to Start Your Property Journey?</h2>
+        <p>
+          Whether you're buying, selling, or investing, our team is here to
+          guide you every step of the way. Experience the Dalwara difference
+          today.
+        </p>
+        <a href="contact.html" class="btn">Contact Our Team</a>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Dalwara<span>Estates</span></div>
-                    <p>Dalwara Real Estate has been helping clients find their perfect properties for over 15 years. We
-                        specialize in residential and commercial properties with a commitment to exceptional service.
-                    </p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="properties.html">Properties</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Street, City Center, 10001</p>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    <p><i class="fas fa-envelope"></i> info@dalwaraestates.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
-                </div>
+   <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <div class="footer-logo">Dalwara<span>Estates</span></div>
+            <p>
+              Dalwara Real Estate has been helping clients find their perfect
+              properties for over 15 years. We specialize in residential and
+              commercial properties with a commitment to exceptional service.
+            </p>
+            <div style="margin-top: 20px; display: flex; gap: 15px">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
+          </div>
 
-            <div class="copyright">
-                <p>&copy; 2023 Dalwara Real Estate. All rights reserved.</p>
-            </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="properties.html">Properties</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Plot No-411/2228,
+              Kantilo,Lane-3 Kalyan Vihar,Phase-1
+            </p>
+            <p><i class="fas fa-phone"></i> +91 7609869819</p>
+            <p><i class="fas fa-envelope"></i> info@dalwara.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+          </div>
         </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Dalwara Estate. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="js/script.js"> </script>
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>

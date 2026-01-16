@@ -1,860 +1,969 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Properties | Dalwara Real Estate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* properties.css - Page-specific CSS for Properties Page */
+      /* properties.css - Page-specific CSS for Properties Page */
 
-        /* Property Filters */
-        .filters-section {
-            background-color: #f9f9f9;
-            padding: 40px 0;
-            margin-top: -30px;
-            position: relative;
-            z-index: 10;
-        }
+      /* Property Filters */
+      .filters-section {
+        background-color: #f9f9f9;
+        padding: 40px 0;
+        margin-top: -30px;
+        position: relative;
+        z-index: 10;
+      }
 
-        .filters-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
+      .filters-container {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
 
-        .filters-title {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
+      .filters-title {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
 
-        .filters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
+      .filters-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 25px;
+      }
 
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-        }
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+      }
 
-        .filter-group label {
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--primary);
-            font-size: 0.95rem;
-        }
+      .filter-group label {
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--primary);
+        font-size: 0.95rem;
+      }
 
-        .filter-group select,
-        .filter-group input {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-            background-color: white;
-        }
+      .filter-group select,
+      .filter-group input {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Poppins", sans-serif;
+        background-color: white;
+      }
 
-        .price-range-inputs {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
+      .price-range-inputs {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
 
-        .price-input {
-            flex: 1;
-        }
+      .price-input {
+        flex: 1;
+      }
 
-        .filter-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--light-gray);
-        }
+      .filter-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--light-gray);
+      }
 
-        .results-count {
-            color: var(--gray);
-            font-weight: 500;
-        }
+      .results-count {
+        color: var(--gray);
+        font-weight: 500;
+      }
 
-        /* Property Listing */
-        .listing-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+      /* Property Listing */
+      .listing-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
 
-        .sort-options {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+      .sort-options {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
 
-        .sort-options label {
-            font-weight: 500;
-            color: var(--primary);
-        }
+      .sort-options label {
+        font-weight: 500;
+        color: var(--primary);
+      }
 
-        .sort-options select {
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-            min-width: 180px;
-        }
+      .sort-options select {
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Poppins", sans-serif;
+        min-width: 180px;
+      }
 
-        .view-options {
-            display: flex;
-            gap: 10px;
-        }
+      .view-options {
+        display: flex;
+        gap: 10px;
+      }
 
-        .view-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--gray);
-        }
+      .view-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--gray);
+      }
 
-        .view-btn.active,
-        .view-btn:hover {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
+      .view-btn.active,
+      .view-btn:hover {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
 
-        .properties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
+      .properties-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+      }
 
-        .properties-grid.list-view {
-            grid-template-columns: 1fr;
-        }
+      .properties-grid.list-view {
+        grid-template-columns: 1fr;
+      }
 
-        .property-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+      .property-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
 
-        .property-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
+      .property-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
 
+      .property-card.list-view {
+        flex-direction: row;
+        height: auto;
+      }
+
+      .property-img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .property-card.list-view .property-img {
+        height: auto;
+        width: 300px;
+        flex-shrink: 0;
+      }
+
+      .property-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .property-card.list-view .property-content {
+        padding: 30px;
+      }
+
+      .property-badge {
+        display: inline-block;
+        padding: 5px 12px;
+        background-color: var(--secondary);
+        color: white;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        align-self: flex-start;
+      }
+
+      .property-badge.sale {
+        background-color: #2ecc71;
+      }
+
+      .property-badge.rent {
+        background-color: #3498db;
+      }
+
+      .property-badge.featured {
+        background-color: #e74c3c;
+      }
+
+      .property-price {
+        color: var(--secondary);
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .property-title {
+        color: var(--primary);
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+      }
+
+      .property-location {
+        color: var(--gray);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .property-description {
+        margin-bottom: 20px;
+        color: var(--gray);
+        flex-grow: 1;
+      }
+
+      .property-features {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid var(--light-gray);
+      }
+
+      .property-card.list-view .property-features {
+        justify-content: flex-start;
+        gap: 30px;
+      }
+
+      .feature {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .property-card.list-view .feature {
+        flex-direction: row;
+        gap: 8px;
+      }
+
+      .feature i {
+        color: var(--primary);
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .property-card.list-view .feature i {
+        margin-bottom: 0;
+      }
+
+      .property-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      /* Pagination */
+      .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 50px;
+      }
+
+      .pagination-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        color: var(--dark);
+      }
+
+      .pagination-btn:hover,
+      .pagination-btn.active {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+      }
+
+      .pagination-btn.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .pagination-btn.disabled:hover {
+        background-color: white;
+        color: var(--dark);
+        border-color: #ddd;
+      }
+
+      /* Featured Properties Banner */
+      .featured-banner {
+        background: linear-gradient(
+            rgba(26, 82, 118, 0.9),
+            rgba(26, 82, 118, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 60px 0;
+        border-radius: 8px;
+        margin: 60px 0;
+        text-align: center;
+      }
+
+      .featured-banner h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+      }
+
+      .featured-banner p {
+        max-width: 700px;
+        margin: 0 auto 25px;
+        opacity: 0.9;
+      }
+
+      /* Responsive for Properties Page */
+      @media (max-width: 992px) {
         .property-card.list-view {
-            flex-direction: row;
-            height: auto;
-        }
-
-        .property-img {
-            height: 220px;
-            width: 100%;
-            object-fit: cover;
-            transition: var(--transition);
+          flex-direction: column;
         }
 
         .property-card.list-view .property-img {
-            height: auto;
-            width: 300px;
-            flex-shrink: 0;
+          width: 100%;
+          height: 220px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .filters-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
 
-        .property-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .listing-controls {
+          flex-direction: column;
+          align-items: flex-start;
         }
 
-        .property-card.list-view .property-content {
-            padding: 30px;
+        .view-options {
+          align-self: flex-end;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .filters-grid {
+          grid-template-columns: 1fr;
         }
 
-        .property-badge {
-            display: inline-block;
-            padding: 5px 12px;
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            align-self: flex-start;
-        }
-
-        .property-badge.sale {
-            background-color: #2ecc71;
-        }
-
-        .property-badge.rent {
-            background-color: #3498db;
-        }
-
-        .property-badge.featured {
-            background-color: #e74c3c;
-        }
-
-        .property-price {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .property-title {
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .property-location {
-            color: var(--gray);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .property-description {
-            margin-bottom: 20px;
-            color: var(--gray);
-            flex-grow: 1;
-        }
-
-        .property-features {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--light-gray);
-        }
-
-        .property-card.list-view .property-features {
-            justify-content: flex-start;
-            gap: 30px;
-        }
-
-        .feature {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .property-card.list-view .feature {
-            flex-direction: row;
-            gap: 8px;
-        }
-
-        .feature i {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .property-card.list-view .feature i {
-            margin-bottom: 0;
+        .properties-grid {
+          grid-template-columns: 1fr;
         }
 
         .property-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
+          flex-direction: column;
         }
 
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 50px;
+        .property-actions .btn {
+          width: 100%;
+          text-align: center;
         }
-
-        .pagination-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--dark);
-        }
-
-        .pagination-btn:hover,
-        .pagination-btn.active {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .pagination-btn.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .pagination-btn.disabled:hover {
-            background-color: white;
-            color: var(--dark);
-            border-color: #ddd;
-        }
-
-        /* Featured Properties Banner */
-        .featured-banner {
-            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 0;
-            border-radius: 8px;
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .featured-banner h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        .featured-banner p {
-            max-width: 700px;
-            margin: 0 auto 25px;
-            opacity: 0.9;
-        }
-
-        /* Responsive for Properties Page */
-        @media (max-width: 992px) {
-            .property-card.list-view {
-                flex-direction: column;
-            }
-
-            .property-card.list-view .property-img {
-                width: 100%;
-                height: 220px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .filters-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .listing-controls {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .view-options {
-                align-self: flex-end;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .filters-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .properties-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .property-actions {
-                flex-direction: column;
-            }
-
-            .property-actions .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="/" class="logo">
-                <img src="assets/logo1.png" alt="Dalwara Estates Logo" class="logo-img">
-                <div class="logo-text">Dalwara<span>Estates</span></div>
-            </a>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <img
+            src="assets/logo1new.png"
+            alt="Dalwara Estates Logo"
+            class="logo-img"
+          />
+          <!-- <div class="logo-text">Dalwara<span>Estates</span></div> -->
+        </a>
 
-            <div class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="properties.html" class="active">Properties</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
         </div>
+
+        <nav id="mainNav">
+          <ul>
+            <!-- <li><a href="/">Home</a></li> -->
+            <!-- <li><a href="about.html">About Us</a></li> -->
+            <li><a href="properties.html" class="active">Properties</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="container">
-            <h1>Browse Our Properties</h1>
-            <div class="breadcrumb">
-                <a href="/">Home</a> / <span>Properties</span>
-            </div>
+      <div class="container">
+        <h1>Browse Our Properties</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> / <span>Properties</span>
         </div>
+      </div>
     </section>
 
     <!-- Property Filters -->
     <section class="filters-section">
-        <div class="container">
-            <div class="filters-container">
-                <h3 class="filters-title">Find Your Perfect Property</h3>
-                <form id="propertyFilters">
-                    <div class="filters-grid">
-                        <div class="filter-group">
-                            <label for="propertyType">Property Type</label>
-                            <select id="propertyType">
-                                <option value="all">All Types</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="villa">Villa</option>
-                                <option value="house">House</option>
-                                <option value="office">Office Space</option>
-                                <option value="land">Land</option>
-                                <option value="commercial">Commercial</option>
-                            </select>
-                        </div>
+      <div class="container">
+        <div class="filters-container">
+          <h3 class="filters-title">Find Your Perfect Property</h3>
+          <form id="propertyFilters">
+            <div class="filters-grid">
+              <div class="filter-group">
+                <label for="propertyType">Property Type</label>
+                <select id="propertyType">
+                  <option value="all">All Types</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="villa">Villa</option>
+                  <option value="house">House</option>
+                  <option value="office">Office Space</option>
+                  <option value="land">Land</option>
+                  <option value="commercial">Commercial</option>
+                </select>
+              </div>
 
-                        <div class="filter-group">
-                            <label for="location">Location</label>
-                            <select id="location">
-                                <option value="all">All Locations</option>
-                                <option value="downtown">Downtown</option>
-                                <option value="suburbs">Suburbs</option>
-                                <option value="coastal">Coastal Area</option>
-                                <option value="rural">Rural Area</option>
-                                <option value="north">North District</option>
-                                <option value="south">South District</option>
-                            </select>
-                        </div>
+              <div class="filter-group">
+                <label for="location">Location</label>
+                <select id="location">
+                  <option value="all">All Locations</option>
+                  <option value="downtown">Downtown</option>
+                  <option value="suburbs">Suburbs</option>
+                  <option value="coastal">Coastal Area</option>
+                  <option value="rural">Rural Area</option>
+                  <option value="north">North District</option>
+                  <option value="south">South District</option>
+                </select>
+              </div>
 
-                        <div class="filter-group">
-                            <label for="bedrooms">Bedrooms</label>
-                            <select id="bedrooms">
-                                <option value="any">Any</option>
-                                <option value="1">1+</option>
-                                <option value="2">2+</option>
-                                <option value="3">3+</option>
-                                <option value="4">4+</option>
-                                <option value="5">5+</option>
-                            </select>
-                        </div>
+              <div class="filter-group">
+                <label for="bedrooms">Bedrooms</label>
+                <select id="bedrooms">
+                  <option value="any">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                  <option value="5">5+</option>
+                </select>
+              </div>
 
-                        <div class="filter-group">
-                            <label for="bathrooms">Bathrooms</label>
-                            <select id="bathrooms">
-                                <option value="any">Any</option>
-                                <option value="1">1+</option>
-                                <option value="2">2+</option>
-                                <option value="3">3+</option>
-                                <option value="4">4+</option>
-                            </select>
-                        </div>
+              <div class="filter-group">
+                <label for="bathrooms">Bathrooms</label>
+                <select id="bathrooms">
+                  <option value="any">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                </select>
+              </div>
 
-                        <div class="filter-group">
-                            <label for="priceRange">Price Range</label>
-                            <select id="priceRange">
-                                <option value="any">Any Price</option>
-                                <option value="0-200">Under ₹72,00,000</option>
-                                <option value="200-500">₹72,00,000 - ₹75,00,000</option>
-                                <option value="500-1000">₹75,00,000 - ₹1,10,00,000</option>
-                                <option value="1000+">₹71,00,000+</option>
-                            </select>
-                        </div>
+              <div class="filter-group">
+                <label for="priceRange">Price Range</label>
+                <select id="priceRange">
+                  <option value="any">Any Price</option>
+                  <option value="0-200">Under ₹72,00,000</option>
+                  <option value="200-500">₹72,00,000 - ₹75,00,000</option>
+                  <option value="500-1000">₹75,00,000 - ₹1,10,00,000</option>
+                  <option value="1000+">₹71,00,000+</option>
+                </select>
+              </div>
 
-                        <div class="filter-group">
-                            <label for="propertyStatus">Property Status</label>
-                            <select id="propertyStatus">
-                                <option value="all">All Status</option>
-                                <option value="sale">For Sale</option>
-                                <option value="rent">For Rent</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="filter-actions">
-                        <div class="results-count" id="resultsCount">Showing 12 properties</div>
-                        <div>
-                            <button type="reset" class="btn btn-outline" id="resetFilters">Reset Filters</button>
-                            <button type="submit" class="btn btn-primary">Apply Filters</button>
-                        </div>
-                    </div>
-                </form>
+              <div class="filter-group">
+                <label for="propertyStatus">Property Status</label>
+                <select id="propertyStatus">
+                  <option value="all">All Status</option>
+                  <option value="sale">For Sale</option>
+                  <option value="rent">For Rent</option>
+                </select>
+              </div>
             </div>
+
+            <div class="filter-actions">
+              <div class="results-count" id="resultsCount">
+                Showing 12 properties
+              </div>
+              <div>
+                <button type="reset" class="btn btn-outline" id="resetFilters">
+                  Reset Filters
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Apply Filters
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
     </section>
 
     <!-- Property Listing -->
     <section>
-        <div class="container">
-            <div class="listing-controls">
-                <div class="sort-options">
-                    <label for="sortBy">Sort by:</label>
-                    <select id="sortBy">
-                        <option value="featured">Featured</option>
-                        <option value="newest">Newest</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="size">Property Size</option>
-                    </select>
-                </div>
+      <div class="container">
+        <div class="listing-controls">
+          <div class="sort-options">
+            <label for="sortBy">Sort by:</label>
+            <select id="sortBy">
+              <option value="featured">Featured</option>
+              <option value="newest">Newest</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="size">Property Size</option>
+            </select>
+          </div>
 
-                <div class="view-options">
-                    <button class="view-btn active" id="gridViewBtn" title="Grid View">
-                        <i class="fas fa-th-large"></i>
-                    </button>
-                    <button class="view-btn" id="listViewBtn" title="List View">
-                        <i class="fas fa-list"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="properties-grid" id="propertiesGrid">
-                <!-- Property 1 -->
-                <div class="property-card" data-type="apartment" data-location="downtown" data-bedrooms="2"
-                    data-price="450000" data-status="sale">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="City Apartment" class="property-img">
-                    <div class="property-content">
-                        <span class="property-badge sale">For Sale</span>
-                        <span class="property-badge featured">Featured</span>
-                        <h3 class="property-title">Luxury City Center Apartment</h3>
-                        <div class="property-price">₹74,50,000</div>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Downtown, Prime Location
-                        </div>
-                        <p class="property-description">Modern 2-bedroom apartment with stunning city views, balcony,
-                            and access to gym and pool facilities. Recently renovated with high-end finishes.</p>
-                        <div class="property-features">
-                            <div class="feature">
-                                <i class="fas fa-bed"></i>
-                                <span>2 Beds</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-bath"></i>
-                                <span>2 Baths</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-ruler-combined"></i>
-                                <span>1,200 sqft</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-car"></i>
-                                <span>1 Garage</span>
-                            </div>
-                        </div>
-                        <div class="property-actions">
-                            <a href="property-details.html" class="btn">View Details</a>
-                            <button class="btn btn-outline" onclick="scheduleViewing(1)">Schedule Viewing</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 2 -->
-                <div class="property-card" data-type="villa" data-location="coastal" data-bedrooms="4"
-                    data-price="850000" data-status="sale">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Modern Villa" class="property-img">
-                    <div class="property-content">
-                        <span class="property-badge sale">For Sale</span>
-                        <h3 class="property-title">Modern Luxury Villa</h3>
-                        <div class="property-price">₹78,50,000</div>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Coastal Area, Beachfront
-                        </div>
-                        <p class="property-description">Spacious 4-bedroom villa with modern amenities, swimming pool,
-                            garden, and direct beach access in a gated community.</p>
-                        <div class="property-features">
-                            <div class="feature">
-                                <i class="fas fa-bed"></i>
-                                <span>4 Beds</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-bath"></i>
-                                <span>3 Baths</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-ruler-combined"></i>
-                                <span>3,200 sqft</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-swimming-pool"></i>
-                                <span>Pool</span>
-                            </div>
-                        </div>
-                        <div class="property-actions">
-                            <a href="property-details.html" class="btn">View Details</a>
-                            <button class="btn btn-outline" onclick="scheduleViewing(2)">Schedule Viewing</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 3 -->
-                <div class="property-card" data-type="house" data-location="suburbs" data-bedrooms="3"
-                    data-price="625000" data-status="sale">
-                    <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Suburban House" class="property-img">
-                    <div class="property-content">
-                        <span class="property-badge sale">For Sale</span>
-                        <h3 class="property-title">Suburban Family Home</h3>
-                        <div class="property-price">₹76,25,000</div>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Green Suburbs, Quiet Neighborhood
-                        </div>
-                        <p class="property-description">Charming 3-bedroom house with large backyard, garage, and
-                            recently renovated kitchen and bathrooms. Perfect for families.</p>
-                        <div class="property-features">
-                            <div class="feature">
-                                <i class="fas fa-bed"></i>
-                                <span>3 Beds</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-bath"></i>
-                                <span>2.5 Baths</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-ruler-combined"></i>
-                                <span>2,100 sqft</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-tree"></i>
-                                <span>Garden</span>
-                            </div>
-                        </div>
-                        <div class="property-actions">
-                            <a href="property-details.html" class="btn">View Details</a>
-                            <button class="btn btn-outline" onclick="scheduleViewing(3)">Schedule Viewing</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 4 -->
-                <div class="property-card" data-type="apartment" data-location="downtown" data-bedrooms="1"
-                    data-price="1800" data-status="rent">
-                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Studio Apartment" class="property-img">
-                    <div class="property-content">
-                        <span class="property-badge rent">For Rent</span>
-                        <h3 class="property-title">Modern Studio Apartment</h3>
-                        <div class="property-price">₹71,800/month</div>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Downtown, City Center
-                        </div>
-                        <p class="property-description">Fully furnished studio apartment in a modern building with gym,
-                            rooftop terrace, and 24/7 security. Perfect for professionals.</p>
-                        <div class="property-features">
-                            <div class="feature">
-                                <i class="fas fa-bed"></i>
-                                <span>Studio</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-bath"></i>
-                                <span>1 Bath</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-ruler-combined"></i>
-                                <span>650 sqft</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-dumbbell"></i>
-                                <span>Gym</span>
-                            </div>
-                        </div>
-                        <div class="property-actions">
-                            <a href="property-details.html" class="btn">View Details</a>
-                            <button class="btn btn-outline" onclick="scheduleViewing(4)">Schedule Viewing</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 5 -->
-                <div class="property-card" data-type="office" data-location="downtown" data-bedrooms="0"
-                    data-price="3200" data-status="rent">
-                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Office Space" class="property-img">
-                    <div class="property-content">
-                        <span class="property-badge rent">For Rent</span>
-                        <h3 class="property-title">Premium Office Space</h3>
-                        <div class="property-price">₹73,200/month</div>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Downtown, Business District
-                        </div>
-                        <p class="property-description">Modern office space with conference rooms, high-speed internet,
-                            reception area, and stunning city views. Ideal for startups and established businesses.</p>
-                        <div class="property-features">
-                            <div class="feature">
-                                <i class="fas fa-building"></i>
-                                <span>Office</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-ruler-combined"></i>
-                                <span>1,500 sqft</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-users"></i>
-                                <span>10+ People</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-wifi"></i>
-                                <span>WiFi</span>
-                            </div>
-                        </div>
-                        <div class="property-actions">
-                            <a href="property-details.html" class="btn">View Details</a>
-                            <button class="btn btn-outline" onclick="scheduleViewing(5)">Schedule Viewing</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property 6 -->
-                <div class="property-card" data-type="land" data-location="rural" data-bedrooms="0" data-price="250000"
-                    data-status="sale">
-                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Land Plot" class="property-img">
-                    <div class="property-content">
-                        <span class="property-badge sale">For Sale</span>
-                        <h3 class="property-title">Development Land Plot</h3>
-                        <div class="property-price">₹72,50,000</div>
-                        <div class="property-location">
-                            <i class="fas fa-map-marker-alt"></i> Rural Area, Development Zone
-                        </div>
-                        <p class="property-description">Prime 5-acre land plot with development approval for residential
-                            or commercial use. Utilities available at boundary.</p>
-                        <div class="property-features">
-                            <div class="feature">
-                                <i class="fas fa-expand"></i>
-                                <span>5 Acres</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-tint"></i>
-                                <span>Water</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-bolt"></i>
-                                <span>Electricity</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-road"></i>
-                                <span>Road Access</span>
-                            </div>
-                        </div>
-                        <div class="property-actions">
-                            <a href="property-details.html" class="btn">View Details</a>
-                            <button class="btn btn-outline" onclick="scheduleViewing(6)">Schedule Viewing</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pagination -->
-            <div class="pagination">
-                <button class="pagination-btn disabled">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="pagination-btn active">1</button>
-                <button class="pagination-btn">2</button>
-                <button class="pagination-btn">3</button>
-                <button class="pagination-btn">4</button>
-                <button class="pagination-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
+          <div class="view-options">
+            <button class="view-btn active" id="gridViewBtn" title="Grid View">
+              <i class="fas fa-th-large"></i>
+            </button>
+            <button class="view-btn" id="listViewBtn" title="List View">
+              <i class="fas fa-list"></i>
+            </button>
+          </div>
         </div>
+
+        <div class="properties-grid" id="propertiesGrid">
+          <!-- Property 1 -->
+          <div
+            class="property-card"
+            data-type="apartment"
+            data-location="downtown"
+            data-bedrooms="2"
+            data-price="450000"
+            data-status="sale"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="City Apartment"
+              class="property-img"
+            />
+            <div class="property-content">
+              <span class="property-badge sale">For Sale</span>
+              <span class="property-badge featured">Featured</span>
+              <h3 class="property-title">Luxury City Center Apartment</h3>
+              <div class="property-price">₹74,50,000</div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i> Downtown, Prime Location
+              </div>
+              <p class="property-description">
+                Modern 2-bedroom apartment with stunning city views, balcony,
+                and access to gym and pool facilities. Recently renovated with
+                high-end finishes.
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-bed"></i>
+                  <span>2 Beds</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-bath"></i>
+                  <span>2 Baths</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-ruler-combined"></i>
+                  <span>1,200 sqft</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-car"></i>
+                  <span>1 Garage</span>
+                </div>
+              </div>
+              <div class="property-actions">
+                <a href="property-details.html" class="btn">View Details</a>
+                <button class="btn btn-outline" onclick="scheduleViewing(1)">
+                  Schedule Viewing
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property 2 -->
+          <div
+            class="property-card"
+            data-type="villa"
+            data-location="coastal"
+            data-bedrooms="4"
+            data-price="850000"
+            data-status="sale"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Modern Villa"
+              class="property-img"
+            />
+            <div class="property-content">
+              <span class="property-badge sale">For Sale</span>
+              <h3 class="property-title">Modern Luxury Villa</h3>
+              <div class="property-price">₹78,50,000</div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i> Coastal Area, Beachfront
+              </div>
+              <p class="property-description">
+                Spacious 4-bedroom villa with modern amenities, swimming pool,
+                garden, and direct beach access in a gated community.
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-bed"></i>
+                  <span>4 Beds</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-bath"></i>
+                  <span>3 Baths</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-ruler-combined"></i>
+                  <span>3,200 sqft</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-swimming-pool"></i>
+                  <span>Pool</span>
+                </div>
+              </div>
+              <div class="property-actions">
+                <a href="property-details.html" class="btn">View Details</a>
+                <button class="btn btn-outline" onclick="scheduleViewing(2)">
+                  Schedule Viewing
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property 3 -->
+          <div
+            class="property-card"
+            data-type="house"
+            data-location="suburbs"
+            data-bedrooms="3"
+            data-price="625000"
+            data-status="sale"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Suburban House"
+              class="property-img"
+            />
+            <div class="property-content">
+              <span class="property-badge sale">For Sale</span>
+              <h3 class="property-title">Suburban Family Home</h3>
+              <div class="property-price">₹76,25,000</div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i> Green Suburbs, Quiet
+                Neighborhood
+              </div>
+              <p class="property-description">
+                Charming 3-bedroom house with large backyard, garage, and
+                recently renovated kitchen and bathrooms. Perfect for families.
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-bed"></i>
+                  <span>3 Beds</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-bath"></i>
+                  <span>2.5 Baths</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-ruler-combined"></i>
+                  <span>2,100 sqft</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-tree"></i>
+                  <span>Garden</span>
+                </div>
+              </div>
+              <div class="property-actions">
+                <a href="property-details.html" class="btn">View Details</a>
+                <button class="btn btn-outline" onclick="scheduleViewing(3)">
+                  Schedule Viewing
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property 4 -->
+          <div
+            class="property-card"
+            data-type="apartment"
+            data-location="downtown"
+            data-bedrooms="1"
+            data-price="1800"
+            data-status="rent"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Studio Apartment"
+              class="property-img"
+            />
+            <div class="property-content">
+              <span class="property-badge rent">For Rent</span>
+              <h3 class="property-title">Modern Studio Apartment</h3>
+              <div class="property-price">₹71,800/month</div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i> Downtown, City Center
+              </div>
+              <p class="property-description">
+                Fully furnished studio apartment in a modern building with gym,
+                rooftop terrace, and 24/7 security. Perfect for professionals.
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-bed"></i>
+                  <span>Studio</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-bath"></i>
+                  <span>1 Bath</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-ruler-combined"></i>
+                  <span>650 sqft</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-dumbbell"></i>
+                  <span>Gym</span>
+                </div>
+              </div>
+              <div class="property-actions">
+                <a href="property-details.html" class="btn">View Details</a>
+                <button class="btn btn-outline" onclick="scheduleViewing(4)">
+                  Schedule Viewing
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property 5 -->
+          <div
+            class="property-card"
+            data-type="office"
+            data-location="downtown"
+            data-bedrooms="0"
+            data-price="3200"
+            data-status="rent"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Office Space"
+              class="property-img"
+            />
+            <div class="property-content">
+              <span class="property-badge rent">For Rent</span>
+              <h3 class="property-title">Premium Office Space</h3>
+              <div class="property-price">₹73,200/month</div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i> Downtown, Business
+                District
+              </div>
+              <p class="property-description">
+                Modern office space with conference rooms, high-speed internet,
+                reception area, and stunning city views. Ideal for startups and
+                established businesses.
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-building"></i>
+                  <span>Office</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-ruler-combined"></i>
+                  <span>1,500 sqft</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-users"></i>
+                  <span>10+ People</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-wifi"></i>
+                  <span>WiFi</span>
+                </div>
+              </div>
+              <div class="property-actions">
+                <a href="property-details.html" class="btn">View Details</a>
+                <button class="btn btn-outline" onclick="scheduleViewing(5)">
+                  Schedule Viewing
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Property 6 -->
+          <div
+            class="property-card"
+            data-type="land"
+            data-location="rural"
+            data-bedrooms="0"
+            data-price="250000"
+            data-status="sale"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Land Plot"
+              class="property-img"
+            />
+            <div class="property-content">
+              <span class="property-badge sale">For Sale</span>
+              <h3 class="property-title">Development Land Plot</h3>
+              <div class="property-price">₹72,50,000</div>
+              <div class="property-location">
+                <i class="fas fa-map-marker-alt"></i> Rural Area, Development
+                Zone
+              </div>
+              <p class="property-description">
+                Prime 5-acre land plot with development approval for residential
+                or commercial use. Utilities available at boundary.
+              </p>
+              <div class="property-features">
+                <div class="feature">
+                  <i class="fas fa-expand"></i>
+                  <span>5 Acres</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-tint"></i>
+                  <span>Water</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-bolt"></i>
+                  <span>Electricity</span>
+                </div>
+                <div class="feature">
+                  <i class="fas fa-road"></i>
+                  <span>Road Access</span>
+                </div>
+              </div>
+              <div class="property-actions">
+                <a href="property-details.html" class="btn">View Details</a>
+                <button class="btn btn-outline" onclick="scheduleViewing(6)">
+                  Schedule Viewing
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="pagination-btn disabled">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="pagination-btn active">1</button>
+          <button class="pagination-btn">2</button>
+          <button class="pagination-btn">3</button>
+          <button class="pagination-btn">4</button>
+          <button class="pagination-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
     </section>
 
     <!-- Featured Properties Banner -->
     <section class="featured-banner">
-        <div class="container">
-            <h2>Looking for Premium Properties?</h2>
-            <p>Subscribe to our premium property alerts and be the first to know about exclusive listings, price
-                reductions, and new market opportunities.</p>
-            <a href="contact.html" class="btn">Get Property Alerts</a>
-        </div>
+      <div class="container">
+        <h2>Looking for Premium Properties?</h2>
+        <p>
+          Subscribe to our premium property alerts and be the first to know
+          about exclusive listings, price reductions, and new market
+          opportunities.
+        </p>
+        <a href="contact.html" class="btn">Get Property Alerts</a>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Dalwara<span>Estates</span></div>
-                    <p>Dalwara Real Estate has been helping clients find their perfect properties for over 15 years. We
-                        specialize in residential and commercial properties with a commitment to exceptional service.
-                    </p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="properties.html">Properties</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Street, City Center, 10001</p>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    <p><i class="fas fa-envelope"></i> info@dalwaraestates.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <div class="footer-logo">Dalwara<span>Estates</span></div>
+            <p>
+              Dalwara Real Estate has been helping clients find their perfect
+              properties for over 15 years. We specialize in residential and
+              commercial properties with a commitment to exceptional service.
+            </p>
+            <div style="margin-top: 20px; display: flex; gap: 15px">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
+          </div>
 
-            <div class="copyright">
-                <p>&copy; 2023 Dalwara Real Estate. All rights reserved.</p>
-            </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="properties.html">Properties</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Plot No-411/2228,
+              Kantilo,Lane-3 Kalyan Vihar,Phase-1
+            </p>
+            <p><i class="fas fa-phone"></i> +91 7609869819</p>
+            <p><i class="fas fa-envelope"></i> info@dalwara.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+          </div>
         </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Dalwara Estate. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="js/script.js"> </script>
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>

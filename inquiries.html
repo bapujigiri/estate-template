@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Property Inquiries | Dalwara Real Estate</title>
+
+    <!-- Fonts & Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f6f8fa;
+      }
+
+      .page-header {
+        background: linear-gradient(
+            rgba(26, 82, 118, 0.9),
+            rgba(26, 82, 118, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267");
+        background-size: cover;
+        background-position: center;
+        padding: 60px 0;
+        color: #fff;
+        text-align: center;
+      }
+
+      .inquiry-container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        margin-top: -40px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .inquiry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .inquiry-header h2 {
+        color: var(--primary);
+      }
+
+      .search-box {
+        position: relative;
+      }
+
+      .search-box input {
+        padding: 10px 35px 10px 15px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+
+      .search-box i {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background-color: var(--primary);
+        color: #fff;
+      }
+
+      th,
+      td {
+        padding: 14px 12px;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      tbody tr {
+        border-bottom: 1px solid #eee;
+      }
+
+      tbody tr:hover {
+        background-color: #f9f9f9;
+      }
+
+      .status {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        display: inline-block;
+      }
+
+      .status.new {
+        background: #3498db;
+        color: #fff;
+      }
+      .status.contacted {
+        background: #f1c40f;
+        color: #000;
+      }
+      .status.closed {
+        background: #2ecc71;
+        color: #fff;
+      }
+
+      .action-btns button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-right: 8px;
+        font-size: 1rem;
+        color: var(--primary);
+      }
+
+      .action-btns button.delete {
+        color: #e74c3c;
+      }
+
+      @media (max-width: 768px) {
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tbody tr {
+          margin-bottom: 15px;
+          background: #fff;
+          padding: 15px;
+          border-radius: 6px;
+        }
+
+        td {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px 0;
+        }
+
+        td::before {
+          content: attr(data-label);
+          font-weight: 600;
+          color: var(--primary);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <img src="assets/logo1new.png" alt="Dalwara Estates" class="logo-img" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>Property Inquiries</h1>
+        <p>Manage and track customer inquiries</p>
+      </div>
+    </section>
+
+    <!-- Inquiry Table -->
+    <section class="tableList">
+      <div class="inquiry-container">
+        <div class="inquiry-header">
+          <h2>Inquiry List</h2>
+          <div class="search-box">
+            <input type="text" placeholder="Search inquiries..." />
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Property</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="#">1</td>
+              <td data-label="Name">Rahul Sharma</td>
+              <td data-label="Email">rahul@gmail.com</td>
+              <td data-label="Phone">+91 9876543210</td>
+              <td data-label="Property">Luxury City Apartment</td>
+              <td data-label="Date">12 Sep 2023</td>
+              <td data-label="Status"><span class="status new">New</span></td>
+              <td data-label="Actions" class="action-btns">
+                <button title="View"><i class="fas fa-eye"></i></button>
+                <button title="Edit"><i class="fas fa-pen"></i></button>
+                <button class="delete" title="Delete">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="#">2</td>
+              <td data-label="Name">Anita Verma</td>
+              <td data-label="Email">anita@gmail.com</td>
+              <td data-label="Phone">+91 9123456780</td>
+              <td data-label="Property">Modern Luxury Villa</td>
+              <td data-label="Date">10 Sep 2023</td>
+              <td data-label="Status">
+                <span class="status contacted">Contacted</span>
+              </td>
+              <td data-label="Actions" class="action-btns">
+                <button><i class="fas fa-eye"></i></button>
+                <button><i class="fas fa-pen"></i></button>
+                <button class="delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+
+            <tr>
+              <td data-label="#">3</td>
+              <td data-label="Name">Suresh Kumar</td>
+              <td data-label="Email">suresh@gmail.com</td>
+              <td data-label="Phone">+91 9988776655</td>
+              <td data-label="Property">Suburban Family Home</td>
+              <td data-label="Date">08 Sep 2023</td>
+              <td data-label="Status">
+                <span class="status closed">Closed</span>
+              </td>
+              <td data-label="Actions" class="action-btns">
+                <button><i class="fas fa-eye"></i></button>
+                <button><i class="fas fa-pen"></i></button>
+                <button class="delete"><i class="fas fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p style="text-align: center">
+          &copy; 2023 Dalwara Estate. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,641 +1,771 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Services | Dalwara Real Estate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* Services Page Specific CSS */
+      /* Services Page Specific CSS */
 
-        /* Services Overview */
-        .services-overview {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
+      /* Services Overview */
+      .services-overview {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 60px;
+      }
 
-        .services-overview h2 {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
+      .services-overview h2 {
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
 
-        /* Main Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
+      /* Main Services Grid */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
 
-        .service-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+      .service-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
 
-        .service-img {
-            height: 220px;
-            width: 100%;
-            object-fit: cover;
-        }
+      .service-img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+      }
 
-        .service-content {
-            padding: 30px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
+      .service-content {
+        padding: 30px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
 
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(26, 82, 118, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(26, 82, 118, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
 
-        .service-content h3 {
-            color: var(--primary);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-        }
+      .service-content h3 {
+        color: var(--primary);
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+      }
 
-        .service-features {
-            margin: 20px 0;
-            flex-grow: 1;
-        }
+      .service-features {
+        margin: 20px 0;
+        flex-grow: 1;
+      }
 
-        .service-features li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
+      .service-features li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
 
-        .service-features i {
-            color: var(--secondary);
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
+      .service-features i {
+        color: var(--secondary);
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
 
-        /* Property Consulting Section */
-        .consulting-section {
-            background-color: #f9f9f9;
-        }
+      /* Property Consulting Section */
+      .consulting-section {
+        background-color: #f9f9f9;
+      }
 
+      .consulting-container {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+
+      .consulting-img {
+        flex: 1;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .consulting-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .consulting-img:hover img {
+        transform: scale(1.05);
+      }
+
+      .consulting-content {
+        flex: 1;
+      }
+
+      .consulting-content h2 {
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .consulting-features {
+        margin: 25px 0;
+      }
+
+      .consulting-feature {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .consulting-feature-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(230, 126, 34, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary);
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+
+      /* Process Section */
+      .process-section {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .process-section .section-title h2 {
+        color: white;
+      }
+
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        counter-reset: step-counter;
+      }
+
+      .process-step {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 40px 30px;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .process-step:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+        transform: translateY(-5px);
+      }
+
+      .process-step:before {
+        counter-increment: step-counter;
+        content: counter(step-counter);
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background-color: var(--secondary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .process-step h3 {
+        color: white;
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+
+      /* Additional Services */
+      .additional-services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 60px;
+      }
+
+      .additional-service {
+        text-align: center;
+        padding: 30px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
+
+      .additional-service:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .additional-service-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(26, 82, 118, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+            rgba(26, 82, 118, 0.9),
+            rgba(26, 82, 118, 0.9)
+          ),
+          url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        max-width: 700px;
+        margin: 0 auto 30px;
+        opacity: 0.9;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
         .consulting-container {
-            display: flex;
-            align-items: center;
-            gap: 50px;
+          flex-direction: column;
         }
 
         .consulting-img {
-            flex: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          width: 100%;
         }
+      }
 
-        .consulting-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
+      @media (max-width: 768px) {
+        .services-grid {
+          grid-template-columns: 1fr;
         }
+      }
 
-        .consulting-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .consulting-content {
-            flex: 1;
-        }
-
-        .consulting-content h2 {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-        }
-
-        .consulting-features {
-            margin: 25px 0;
-        }
-
-        .consulting-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .consulting-feature-icon {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(230, 126, 34, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        /* Process Section */
-        .process-section {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .process-section .section-title h2 {
-            color: white;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            counter-reset: step-counter;
+      @media (max-width: 576px) {
+        .service-content {
+          padding: 25px 20px;
         }
 
         .process-step {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 40px 30px;
-            border-radius: 8px;
-            text-align: center;
-            position: relative;
-            transition: var(--transition);
+          padding: 30px 20px;
         }
-
-        .process-step:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .process-step:before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .process-step h3 {
-            color: white;
-            margin-top: 10px;
-            margin-bottom: 15px;
-        }
-
-        /* Additional Services */
-        .additional-services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .additional-service {
-            text-align: center;
-            padding: 30px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .additional-service:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .additional-service-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(26, 82, 118, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 80px 0;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .consulting-container {
-                flex-direction: column;
-            }
-
-            .consulting-img {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .service-content {
-                padding: 25px 20px;
-            }
-
-            .process-step {
-                padding: 30px 20px;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="/" class="logo">
-                <img src="assets/logo1.png" alt="Dalwara Estates Logo" class="logo-img">
-                <div class="logo-text">Dalwara<span>Estates</span></div>
-            </a>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <img
+            src="assets/logo1new.png"
+            alt="Dalwara Estates Logo"
+            class="logo-img"
+          />
+          <!-- <div class="logo-text">Dalwara<span>Estates</span></div> -->
+        </a>
 
-            <div class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="properties.html">Properties</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
         </div>
+
+        <nav id="mainNav">
+          <ul>
+            <!-- <li><a href="/">Home</a></li> -->
+            <!-- <li><a href="about.html">About Us</a></li> -->
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="container">
-            <h1>Our Real Estate Services</h1>
-            <div class="breadcrumb">
-                <a href="/">Home</a> / <span>Services</span>
-            </div>
+      <div class="container">
+        <h1>Our Real Estate Services</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> / <span>Services</span>
         </div>
+      </div>
     </section>
 
     <!-- Services Overview -->
     <section>
-        <div class="container">
-            <div class="services-overview">
-                <h2>Comprehensive Real Estate Solutions</h2>
-                <p>At Dalwara Real Estate, we offer a full spectrum of real estate services designed to meet all your
-                    property needs. Whether you're buying, selling, renting, or investing, our expert team provides
-                    personalized guidance every step of the way.</p>
-            </div>
-
-            <!-- Main Services Grid -->
-            <div class="services-grid">
-                <!-- Buying Service -->
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Property Buying" class="service-img">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3>Property Buying</h3>
-                        <p>Find your dream home or investment property with our comprehensive buying services. We guide
-                            you through the entire process from search to closing.</p>
-
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> Personalized property search based on your criteria
-                            </li>
-                            <li><i class="fas fa-check-circle"></i> Market analysis and property valuation</li>
-                            <li><i class="fas fa-check-circle"></i> Property viewing coordination</li>
-                            <li><i class="fas fa-check-circle"></i> Negotiation support and advice</li>
-                            <li><i class="fas fa-check-circle"></i> Legal documentation assistance</li>
-                            <li><i class="fas fa-check-circle"></i> Financing guidance and referrals</li>
-                        </ul>
-
-                        <a href="contact.html" class="btn btn-outline">Start Your Search</a>
-                    </div>
-                </div>
-
-                <!-- Selling Service -->
-                <div class="service-card">
-                    <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Property Selling" class="service-img">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Property Selling</h3>
-                        <p>Maximize your property's value and sell quickly with our expert selling services. We employ
-                            strategic marketing and negotiation to get you the best price.</p>
-
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> Free property valuation and market analysis</li>
-                            <li><i class="fas fa-check-circle"></i> Professional photography and virtual tours</li>
-                            <li><i class="fas fa-check-circle"></i> Strategic marketing across multiple channels</li>
-                            <li><i class="fas fa-check-circle"></i> Qualified buyer screening and viewing coordination
-                            </li>
-                            <li><i class="fas fa-check-circle"></i> Expert negotiation to maximize your return</li>
-                            <li><i class="fas fa-check-circle"></i> Complete transaction management</li>
-                        </ul>
-
-                        <a href="contact.html" class="btn btn-outline">Get a Free Valuation</a>
-                    </div>
-                </div>
-
-                <!-- Rental Service -->
-                <div class="service-card">
-                    <img src="assets/Rental-services.jpg"
-                        alt="Rental Services" class="service-img">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <i class="fas fa-key"></i>
-                        </div>
-                        <h3>Rental Services</h3>
-                        <p>Whether you're looking to rent a property or find tenants for your rental, our comprehensive
-                            rental services make the process seamless and efficient.</p>
-
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> Tenant screening and background checks</li>
-                            <li><i class="fas fa-check-circle"></i> Lease agreement preparation and management</li>
-                            <li><i class="fas fa-check-circle"></i> Property marketing for maximum visibility</li>
-                            <li><i class="fas fa-check-circle"></i> Rent collection and financial reporting</li>
-                            <li><i class="fas fa-check-circle"></i> Property maintenance coordination</li>
-                            <li><i class="fas fa-check-circle"></i> Regular property inspections</li>
-                        </ul>
-
-                        <a href="contact.html" class="btn btn-outline">Explore Rental Options</a>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="services-overview">
+          <h2>Comprehensive Real Estate Solutions</h2>
+          <p>
+            At Dalwara Real Estate, we offer a full spectrum of real estate
+            services designed to meet all your property needs. Whether you're
+            buying, selling, renting, or investing, our expert team provides
+            personalized guidance every step of the way.
+          </p>
         </div>
+
+        <!-- Main Services Grid -->
+        <div class="services-grid">
+          <!-- Buying Service -->
+          <div class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Property Buying"
+              class="service-img"
+            />
+            <div class="service-content">
+              <div class="service-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <h3>Property Buying</h3>
+              <p>
+                Find your dream home or investment property with our
+                comprehensive buying services. We guide you through the entire
+                process from search to closing.
+              </p>
+
+              <ul class="service-features">
+                <li>
+                  <i class="fas fa-check-circle"></i> Personalized property
+                  search based on your criteria
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Market analysis and
+                  property valuation
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Property viewing
+                  coordination
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Negotiation support and
+                  advice
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Legal documentation
+                  assistance
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Financing guidance and
+                  referrals
+                </li>
+              </ul>
+
+              <a href="contact.html" class="btn btn-outline"
+                >Start Your Search</a
+              >
+            </div>
+          </div>
+
+          <!-- Selling Service -->
+          <div class="service-card">
+            <img
+              src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Property Selling"
+              class="service-img"
+            />
+            <div class="service-content">
+              <div class="service-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h3>Property Selling</h3>
+              <p>
+                Maximize your property's value and sell quickly with our expert
+                selling services. We employ strategic marketing and negotiation
+                to get you the best price.
+              </p>
+
+              <ul class="service-features">
+                <li>
+                  <i class="fas fa-check-circle"></i> Free property valuation
+                  and market analysis
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Professional photography
+                  and virtual tours
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Strategic marketing across
+                  multiple channels
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Qualified buyer screening
+                  and viewing coordination
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Expert negotiation to
+                  maximize your return
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Complete transaction
+                  management
+                </li>
+              </ul>
+
+              <a href="contact.html" class="btn btn-outline"
+                >Get a Free Valuation</a
+              >
+            </div>
+          </div>
+
+          <!-- Rental Service -->
+          <div class="service-card">
+            <img
+              src="assets/Rental-services.jpg"
+              alt="Rental Services"
+              class="service-img"
+            />
+            <div class="service-content">
+              <div class="service-icon">
+                <i class="fas fa-key"></i>
+              </div>
+              <h3>Rental Services</h3>
+              <p>
+                Whether you're looking to rent a property or find tenants for
+                your rental, our comprehensive rental services make the process
+                seamless and efficient.
+              </p>
+
+              <ul class="service-features">
+                <li>
+                  <i class="fas fa-check-circle"></i> Tenant screening and
+                  background checks
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Lease agreement
+                  preparation and management
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Property marketing for
+                  maximum visibility
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Rent collection and
+                  financial reporting
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Property maintenance
+                  coordination
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Regular property
+                  inspections
+                </li>
+              </ul>
+
+              <a href="contact.html" class="btn btn-outline"
+                >Explore Rental Options</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Property Consulting Section -->
     <section class="consulting-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Property Consulting Services</h2>
-                <p>Expert guidance for all your real estate decisions</p>
-            </div>
-
-            <div class="consulting-container">
-                <div class="consulting-img">
-                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Property Consultation">
-                </div>
-
-                <div class="consulting-content">
-                    <h2>Strategic Property Consulting</h2>
-                    <p>Our property consulting services provide expert guidance for both individual homeowners and
-                        commercial investors. We help you make informed decisions based on market trends, financial
-                        analysis, and long-term investment strategies.</p>
-
-                    <div class="consulting-features">
-                        <div class="consulting-feature">
-                            <div class="consulting-feature-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div>
-                                <h3>Market Analysis</h3>
-                                <p>Comprehensive analysis of market trends, property values, and investment
-                                    opportunities in your target areas.</p>
-                            </div>
-                        </div>
-
-                        <div class="consulting-feature">
-                            <div class="consulting-feature-icon">
-                                <i class="fas fa-search-dollar"></i>
-                            </div>
-                            <div>
-                                <h3>Investment Strategy</h3>
-                                <p>Develop personalized investment strategies based on your financial goals, risk
-                                    tolerance, and timeline.</p>
-                            </div>
-                        </div>
-
-                        <div class="consulting-feature">
-                            <div class="consulting-feature-icon">
-                                <i class="fas fa-file-contract"></i>
-                            </div>
-                            <div>
-                                <h3>Due Diligence</h3>
-                                <p>Thorough property inspections, legal checks, and documentation review to ensure
-                                    risk-free investments.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="contact.html" class="btn">Schedule a Consultation</a>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Property Consulting Services</h2>
+          <p>Expert guidance for all your real estate decisions</p>
         </div>
+
+        <div class="consulting-container">
+          <div class="consulting-img">
+            <img
+              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              alt="Property Consultation"
+            />
+          </div>
+
+          <div class="consulting-content">
+            <h2>Strategic Property Consulting</h2>
+            <p>
+              Our property consulting services provide expert guidance for both
+              individual homeowners and commercial investors. We help you make
+              informed decisions based on market trends, financial analysis, and
+              long-term investment strategies.
+            </p>
+
+            <div class="consulting-features">
+              <div class="consulting-feature">
+                <div class="consulting-feature-icon">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div>
+                  <h3>Market Analysis</h3>
+                  <p>
+                    Comprehensive analysis of market trends, property values,
+                    and investment opportunities in your target areas.
+                  </p>
+                </div>
+              </div>
+
+              <div class="consulting-feature">
+                <div class="consulting-feature-icon">
+                  <i class="fas fa-search-dollar"></i>
+                </div>
+                <div>
+                  <h3>Investment Strategy</h3>
+                  <p>
+                    Develop personalized investment strategies based on your
+                    financial goals, risk tolerance, and timeline.
+                  </p>
+                </div>
+              </div>
+
+              <div class="consulting-feature">
+                <div class="consulting-feature-icon">
+                  <i class="fas fa-file-contract"></i>
+                </div>
+                <div>
+                  <h3>Due Diligence</h3>
+                  <p>
+                    Thorough property inspections, legal checks, and
+                    documentation review to ensure risk-free investments.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a href="contact.html" class="btn">Schedule a Consultation</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Our Process Section -->
     <section class="process-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Service Process</h2>
-                <p>A streamlined approach to real estate success</p>
-            </div>
-
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-clipboard-list fa-2x"></i>
-                    </div>
-                    <h3>Initial Consultation</h3>
-                    <p>We begin with a detailed consultation to understand your needs, preferences, budget, and
-                        timeline.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-search fa-2x"></i>
-                    </div>
-                    <h3>Property Search/Listing</h3>
-                    <p>Based on your criteria, we search for ideal properties or prepare your property for market with
-                        strategic marketing.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-eye fa-2x"></i>
-                    </div>
-                    <h3>Viewing & Evaluation</h3>
-                    <p>We coordinate property viewings and conduct thorough evaluations to ensure quality and value.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="process-icon">
-                        <i class="fas fa-handshake fa-2x"></i>
-                    </div>
-                    <h3>Negotiation & Closing</h3>
-                    <p>Our experts handle all negotiations and guide you through the closing process with complete
-                        transparency.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Service Process</h2>
+          <p>A streamlined approach to real estate success</p>
         </div>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-icon">
+              <i class="fas fa-clipboard-list fa-2x"></i>
+            </div>
+            <h3>Initial Consultation</h3>
+            <p>
+              We begin with a detailed consultation to understand your needs,
+              preferences, budget, and timeline.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-icon">
+              <i class="fas fa-search fa-2x"></i>
+            </div>
+            <h3>Property Search/Listing</h3>
+            <p>
+              Based on your criteria, we search for ideal properties or prepare
+              your property for market with strategic marketing.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-icon">
+              <i class="fas fa-eye fa-2x"></i>
+            </div>
+            <h3>Viewing & Evaluation</h3>
+            <p>
+              We coordinate property viewings and conduct thorough evaluations
+              to ensure quality and value.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="process-icon">
+              <i class="fas fa-handshake fa-2x"></i>
+            </div>
+            <h3>Negotiation & Closing</h3>
+            <p>
+              Our experts handle all negotiations and guide you through the
+              closing process with complete transparency.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Additional Services -->
     <section>
-        <div class="container">
-            <div class="section-title">
-                <h2>Additional Services</h2>
-                <p>Comprehensive support for all your real estate needs</p>
-            </div>
-
-            <div class="additional-services">
-                <div class="additional-service">
-                    <div class="additional-service-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3>Legal Assistance</h3>
-                    <p>Access to legal experts for property documentation, title verification, and contract review.</p>
-                </div>
-
-                <div class="additional-service">
-                    <div class="additional-service-icon">
-                        <i class="fas fa-piggy-bank"></i>
-                    </div>
-                    <h3>Financing Guidance</h3>
-                    <p>Connect with trusted lenders and get guidance on mortgage options and financing strategies.</p>
-                </div>
-
-                <div class="additional-service">
-                    <div class="additional-service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3>Property Management</h3>
-                    <p>Complete property management services for landlords including maintenance, tenant relations, and
-                        accounting.</p>
-                </div>
-
-                <div class="additional-service">
-                    <div class="additional-service-icon">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <h3>Home Inspection</h3>
-                    <p>Professional home inspection services to identify potential issues before purchase or sale.</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Additional Services</h2>
+          <p>Comprehensive support for all your real estate needs</p>
         </div>
+
+        <div class="additional-services">
+          <div class="additional-service">
+            <div class="additional-service-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3>Legal Assistance</h3>
+            <p>
+              Access to legal experts for property documentation, title
+              verification, and contract review.
+            </p>
+          </div>
+
+          <div class="additional-service">
+            <div class="additional-service-icon">
+              <i class="fas fa-piggy-bank"></i>
+            </div>
+            <h3>Financing Guidance</h3>
+            <p>
+              Connect with trusted lenders and get guidance on mortgage options
+              and financing strategies.
+            </p>
+          </div>
+
+          <div class="additional-service">
+            <div class="additional-service-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Property Management</h3>
+            <p>
+              Complete property management services for landlords including
+              maintenance, tenant relations, and accounting.
+            </p>
+          </div>
+
+          <div class="additional-service">
+            <div class="additional-service-icon">
+              <i class="fas fa-clipboard-check"></i>
+            </div>
+            <h3>Home Inspection</h3>
+            <p>
+              Professional home inspection services to identify potential issues
+              before purchase or sale.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Experience Exceptional Service?</h2>
-            <p>Contact our team today to discuss how we can help you achieve your real estate goals. Our experts are
-                ready to provide personalized solutions for your unique needs.</p>
-            <a href="contact.html" class="btn">Get in Touch</a>
-        </div>
+      <div class="container">
+        <h2>Ready to Experience Exceptional Service?</h2>
+        <p>
+          Contact our team today to discuss how we can help you achieve your
+          real estate goals. Our experts are ready to provide personalized
+          solutions for your unique needs.
+        </p>
+        <a href="contact.html" class="btn">Get in Touch</a>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Dalwara<span>Estates</span></div>
-                    <p>Dalwara Real Estate has been helping clients find their perfect properties for over 15 years. We
-                        specialize in residential and commercial properties with a commitment to exceptional service.
-                    </p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="properties.html">Properties</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Street, City Center, 10001</p>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    <p><i class="fas fa-envelope"></i> info@dalwaraestates.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <div class="footer-logo">Dalwara<span>Estates</span></div>
+            <p>
+              Dalwara Real Estate has been helping clients find their perfect
+              properties for over 15 years. We specialize in residential and
+              commercial properties with a commitment to exceptional service.
+            </p>
+            <div style="margin-top: 20px; display: flex; gap: 15px">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
+          </div>
 
-            <div class="copyright">
-                <p>&copy; 2023 Dalwara Real Estate. All rights reserved.</p>
-            </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="properties.html">Properties</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Plot No-411/2228,
+              Kantilo,Lane-3 Kalyan Vihar,Phase-1
+            </p>
+            <p><i class="fas fa-phone"></i> +91 7609869819</p>
+            <p><i class="fas fa-envelope"></i> info@dalwara.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+          </div>
         </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Dalwara Estate. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="js/script.js"> </script>
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>

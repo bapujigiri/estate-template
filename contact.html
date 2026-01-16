@@ -1,527 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Us | Dalwara Real Estate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* Contact Page Specific CSS */
+      /* Contact Page Specific CSS */
 
-        /* Contact Section */
-        .contact-section {
-            padding-bottom: 0;
-        }
+      /* Contact Section */
+      .contact-section {
+        padding-bottom: 0;
+      }
 
+      .contact-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      /* Contact Form */
+      .contact-form-container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .contact-form-container h2 {
+        color: var(--primary);
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--primary);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Poppins", sans-serif;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.1);
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      /* Contact Info */
+      .contact-info-container {
+        background-color: var(--primary);
+        color: white;
+        padding: 40px;
+        border-radius: 8px;
+        /* height: fit-content; */
+      }
+
+      .contact-info-container h2 {
+        color: white;
+        margin-bottom: 30px;
+        font-size: 1.8rem;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .contact-info-container h2:after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        background-color: var(--secondary);
+        bottom: 0;
+        left: 0;
+      }
+
+      .contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .contact-info-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--secondary);
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .contact-info-content h3 {
+        color: white;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+      }
+
+      .business-hours {
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .business-hours h3 {
+        color: white;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .hours-list li {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+      }
+
+      /* Contact Cards */
+      .contact-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+
+      .contact-card {
+        background-color: white;
+        padding: 40px 30px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+      }
+
+      .contact-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-card-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(26, 82, 118, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 25px;
+        color: var(--primary);
+        font-size: 1.8rem;
+      }
+
+      .contact-card h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      .contact-card p {
+        margin-bottom: 10px;
+      }
+
+      .contact-card a {
+        color: var(--secondary);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .contact-card a:hover {
+        color: var(--primary);
+      }
+
+      /* Map Section */
+      .map-section {
+        padding-top: 0;
+      }
+
+      .map-container {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        height: 450px;
+      }
+
+      .map-placeholder {
+        width: 100%;
+        height: 100%;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray);
+      }
+
+      .map-placeholder i {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--primary);
+        opacity: 0.7;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        background-color: #f9f9f9;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background-color: white;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .faq-question {
+        padding: 20px 25px;
+        font-weight: 600;
+        color: var(--primary);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+      }
+
+      .faq-question:hover {
+        background-color: rgba(26, 82, 118, 0.05);
+      }
+
+      .faq-question.active {
+        background-color: rgba(26, 82, 118, 0.1);
+      }
+
+      .faq-question i {
+        transition: var(--transition);
+      }
+
+      .faq-question.active i {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        padding: 0 25px;
+        max-height: 0;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .faq-answer.active {
+        padding: 0 25px 25px;
+        max-height: 500px;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
         .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        /* Contact Form */
-        .contact-form-container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-form-container h2 {
-            color: var(--primary);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
+          grid-template-columns: 1fr;
         }
 
         .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+          grid-template-columns: 1fr;
         }
+      }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        /* Contact Info */
+      @media (max-width: 768px) {
+        .contact-form-container,
         .contact-info-container {
-            background-color: var(--primary);
-            color: white;
-            padding: 40px;
-            border-radius: 8px;
-            /* height: fit-content; */
+          padding: 30px 25px;
         }
+      }
 
-        .contact-info-container h2 {
-            color: white;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .contact-info-container h2:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background-color: var(--secondary);
-            bottom: 0;
-            left: 0;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .contact-info-icon {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-info-content h3 {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .business-hours {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .business-hours h3 {
-            color: white;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        .hours-list li {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-
-        /* Contact Cards */
+      @media (max-width: 576px) {
         .contact-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
+          grid-template-columns: 1fr;
         }
 
         .contact-card {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .contact-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-card-icon {
-            width: 70px;
-            height: 70px;
-            background-color: rgba(26, 82, 118, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-
-        .contact-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .contact-card p {
-            margin-bottom: 10px;
-        }
-
-        .contact-card a {
-            color: var(--secondary);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .contact-card a:hover {
-            color: var(--primary);
-        }
-
-        /* Map Section */
-        .map-section {
-            padding-top: 0;
+          padding: 30px 20px;
         }
 
         .map-container {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            height: 450px;
+          height: 350px;
         }
-
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            background-color: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-        }
-
-        .map-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            opacity: 0.7;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            background-color: #f9f9f9;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background-color: white;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-question {
-            padding: 20px 25px;
-            font-weight: 600;
-            color: var(--primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        .faq-question:hover {
-            background-color: rgba(26, 82, 118, 0.05);
-        }
-
-        .faq-question.active {
-            background-color: rgba(26, 82, 118, 0.1);
-        }
-
-        .faq-question i {
-            transition: var(--transition);
-        }
-
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .faq-answer.active {
-            padding: 0 25px 25px;
-            max-height: 500px;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .contact-form-container,
-            .contact-info-container {
-                padding: 30px 25px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .contact-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-card {
-                padding: 30px 20px;
-            }
-
-            .map-container {
-                height: 350px;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Header -->
     <header>
-        <div class="container header-container">
-            <a href="/" class="logo">
-                <img src="assets/logo1.png" alt="Dalwara Estates Logo" class="logo-img">
-                <div class="logo-text">Dalwara<span>Estates</span></div>
-            </a>
+      <div class="container header-container">
+        <a href="/" class="logo">
+          <img
+            src="assets/logo1new.png"
+            alt="Dalwara Estates Logo"
+            class="logo-img"
+          />
+          <!-- <div class="logo-text">Dalwara<span>Estates</span></div> -->
+        </a>
 
-            <div class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </div>
-
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="properties.html">Properties</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
         </div>
+
+        <nav id="mainNav">
+          <ul>
+            <!-- <li><a href="/">Home</a></li> -->
+            <!-- <li><a href="about.html">About Us</a></li> -->
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="container">
-            <h1>Contact Dalwara Real Estate</h1>
-            <div class="breadcrumb">
-                <a href="/">Home</a> / <span>Contact Us</span>
-            </div>
+      <div class="container">
+        <h1>Contact Dalwara Real Estate</h1>
+        <div class="breadcrumb">
+          <a href="/">Home</a> / <span>Contact Us</span>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact-section">
-        <div class="container">
-            <div class="contact-container">
-                <!-- Contact Form -->
-                <div class="contact-form-container">
-                    <h2>Send Us a Message</h2>
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required>
-                            </div>
+      <div class="container">
+        <div class="contact-container">
+          <!-- Contact Form -->
+          <div class="contact-form-container">
+            <h2>Send Us a Message</h2>
+            <form id="contactForm">
+              <!-- <div class="form-row"> -->
+                <div class="form-group">
+                  <label for="firstName">Full Name *</label>
+                  <input type="text" id="firstName" name="firstName" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" />
+                </div>
+                <!-- <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required />
+                </div> -->
+              <!-- </div> -->
 
-                            <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
+              <!-- <div class="form-group">
                             <label for="email">Email Address *</label>
                             <input type="email" id="email" name="email" required>
-                        </div>
+                        </div> -->
 
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="property-inquiry">Property Inquiry</option>
+                  <option value="property-valuation">Property Valuation</option>
+                  <option value="buying-assistance">Buying Assistance</option>
+                  <option value="selling-assistance">Selling Assistance</option>
+                  <option value="rental-services">Rental Services</option>
+                  <option value="general-question">General Question</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
 
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="property-inquiry">Property Inquiry</option>
-                                <option value="property-valuation">Property Valuation</option>
-                                <option value="buying-assistance">Buying Assistance</option>
-                                <option value="selling-assistance">Selling Assistance</option>
-                                <option value="rental-services">Rental Services</option>
-                                <option value="general-question">General Question</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
+              <!-- <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Please provide details about your inquiry..."
+                  required
+                ></textarea>
+              </div> -->
 
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message"
-                                placeholder="Please provide details about your inquiry..." required></textarea>
-                        </div>
+              <button type="submit" class="btn submit-btn">Send Message</button>
+            </form>
+          </div>
 
-                        <button type="submit" class="btn submit-btn">Send Message</button>
-                    </form>
-                </div>
+          <!-- Contact Info -->
+          <div class="contact-info-container">
+            <h2>Contact Information</h2>
 
-                <!-- Contact Info -->
-                <div class="contact-info-container">
-                    <h2>Contact Information</h2>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-info-content">
-                            <h3>Office Address</h3>
-                            <p>123 Business Street, City Center<br>State, 10001</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-info-content">
-                            <h3>Phone Number</h3>
-                            <p>Main: (123) 456-7890<br>Sales: (123) 456-7891</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-info-content">
-                            <h3>Email Address</h3>
-                            <p>General: info@dalwaraestates.com<br>Sales: sales@dalwaraestates.com</p>
-                        </div>
-                    </div>
-
-                    <div class="business-hours">
-                        <h3>Business Hours</h3>
-                        <ul class="hours-list">
-                            <li><span>Monday - Friday</span> <span>9:00 AM - 6:00 PM</span></li>
-                            <li><span>Saturday</span> <span>10:00 AM - 4:00 PM</span></li>
-                            <li><span>Sunday</span> <span>By Appointment Only</span></li>
-                            <li><span>Emergency Contact</span> <span>24/7 Available</span></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-info-content">
+                <h3>Office Address</h3>
+                <p>
+                  Plot No-411/2228, Kantilo,Lane-3<br />Kalyan Vihar,Phase-1,<br />Bhubaneswar-751002
+                </p>
+              </div>
             </div>
 
-            <!-- Contact Cards -->
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Customer Support</h3>
-                    <p>Our support team is available to assist you with any questions or concerns.</p>
-                    <p><a href="tel:+1234567890">(123) 456-7890</a></p>
-                    <p><a href="mailto:support@dalwaraestates.com">support@dalwaraestates.com</a></p>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3>Sales Department</h3>
-                    <p>Connect with our sales team for property buying, selling, or investment inquiries.</p>
-                    <p><a href="tel:+1234567891">(123) 456-7891</a></p>
-                    <p><a href="mailto:sales@dalwaraestates.com">sales@dalwaraestates.com</a></p>
-                </div>
-
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <h3>Rental Services</h3>
-                    <p>Contact our rental department for leasing inquiries and property management.</p>
-                    <p><a href="tel:+1234567892">(123) 456-7892</a></p>
-                    <p><a href="mailto:rentals@dalwaraestates.com">rentals@dalwaraestates.com</a></p>
-                </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-info-content">
+                <h3>Phone Number</h3>
+                <p>Main: +91 7609869819<br />Sales: +91 7609869819</p>
+              </div>
             </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-info-content">
+                <h3>Email Address</h3>
+                <p>General: info@dalwara.com<br />Sales: sales@dalwara.com</p>
+              </div>
+            </div>
+
+            <div class="business-hours">
+              <h3>Business Hours</h3>
+              <ul class="hours-list">
+                <li>
+                  <span>Monday - Friday</span> <span>9:00 AM - 6:00 PM</span>
+                </li>
+                <li><span>Saturday</span> <span>10:00 AM - 4:00 PM</span></li>
+                <li><span>Sunday</span> <span>By Appointment Only</span></li>
+                <li>
+                  <span>Emergency Contact</span> <span>24/7 Available</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+
+        <!-- Contact Cards -->
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>Customer Support</h3>
+            <p>
+              Our support team is available to assist you with any questions or
+              concerns.
+            </p>
+            <p><a href="tel:+917609869819">+91 7609869819</a></p>
+            <p><a href="mailto:support@dalwara.com">support@dalwara.com</a></p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            <h3>Sales Department</h3>
+            <p>
+              Connect with our sales team for property buying, selling, or
+              investment inquiries.
+            </p>
+            <p><a href="tel:+917609869819">+91 7609869819</a></p>
+            <p><a href="mailto:sales@dalwara.com">sales@dalwara.com</a></p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <i class="fas fa-key"></i>
+            </div>
+            <h3>Rental Services</h3>
+            <p>
+              Contact our rental department for leasing inquiries and property
+              management.
+            </p>
+            <p><a href="tel:+917609869819">+91 7609869819</a></p>
+            <p><a href="mailto:rentals@dalwara.com">rentals@dalwara.com</a></p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Map Section -->
     <section class="map-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Location</h2>
-                <p>Visit our office or get in touch with our team</p>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Location</h2>
+          <p>Visit our office or get in touch with our team</p>
+        </div>
 
-            <div class="map-container">
-                <!-- Google Maps Iframe -->
-                <!-- <div class="map-placeholder">
+        <div class="map-container">
+          <!-- Google Maps Iframe -->
+          <!-- <div class="map-placeholder">
                     <i class="fas fa-map-marked-alt"></i>
                     <h3>Google Maps Integration</h3>
                     <p>In a real implementation, this would be a Google Maps iframe showing our office location.</p>
                     <p style="margin-top: 15px; font-size: 0.9rem;">Address: 123 Business Street, City Center, 10001</p>
                 </div> -->
-                <!-- Actual Google Maps iframe (commented out for demo) -->
+          <!-- Actual Google Maps iframe (commented out for demo) -->
 
-                <!-- <iframe 
+          <!-- <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.177858804427!2d-73.98784468459418!3d40.70555197933207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a315cdf4c9b%3A0x8b934de5cae6f7a!2sBusiness%20Street%2C%20New%20York%2C%20NY%2010001!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus" 
                     width="100%" 
                     height="100%" 
@@ -531,132 +556,164 @@
                     aria-hidden="false" 
                     tabindex="0">
                 </iframe> -->
-                <iframe
+          <!-- <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62862.37050806939!2d86.44223473995324!3d20.156456982988068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1a31a4fc4c9217%3A0xad0574c27ca9ff49!2sSHREERAM%20CRAB%20CENTER!5e1!3m2!1sen!2sin!4v1765974062623!5m2!1sen!2sin"
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    referrerpolicy="no-referrer-when-downgrade"></iframe> -->
 
-            </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3452.7276005979506!2d85.80012843568124!3d20.204558325590558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDEyJzE2LjgiTiA4NcKwNDgnMDAuNSJF!5e0!3m2!1sen!2sin!4v1767527762454!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
+      </div>
     </section>
 
     <!-- FAQ Section -->
     <section class="faq-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Quick answers to common questions</p>
-            </div>
-
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What areas do you serve?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Dalwara Real Estate serves the entire metropolitan area including Downtown, Suburbs, Coastal
-                            Regions, and surrounding communities. We have extensive knowledge of local markets and can
-                            assist with properties throughout the region.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How do I schedule a property viewing?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You can schedule a property viewing by calling our office at (123) 456-7890, using the
-                            contact form on this page, or by contacting the listing agent directly through any property
-                            listing on our website. We typically require 24-48 hours notice to schedule viewings.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What is your commission rate?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our commission rates are competitive and vary based on the type of property, location, and
-                            services required. We offer transparent pricing and will provide a complete breakdown of all
-                            costs during our initial consultation. Contact us for a personalized quote.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Do you offer virtual property tours?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we offer virtual tours for most of our listed properties. You can view 360° virtual
-                            tours on our property listings page. For properties without virtual tours, we can arrange
-                            live video walkthroughs with our agents.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How long does the buying/selling process typically take?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>The timeline varies depending on market conditions, property type, and individual
-                            circumstances. On average, the selling process takes 4-8 weeks from listing to closing,
-                            while buying typically takes 6-12 weeks from search to closing. We'll provide a personalized
-                            timeline during our consultation.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <p>Quick answers to common questions</p>
         </div>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What areas do you serve?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Dalwara Real Estate serves the entire metropolitan area
+                including Downtown, Suburbs, Coastal Regions, and surrounding
+                communities. We have extensive knowledge of local markets and
+                can assist with properties throughout the region.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do I schedule a property viewing?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                You can schedule a property viewing by calling our office at
+                (123) 456-7890, using the contact form on this page, or by
+                contacting the listing agent directly through any property
+                listing on our website. We typically require 24-48 hours notice
+                to schedule viewings.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>What is your commission rate?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Our commission rates are competitive and vary based on the type
+                of property, location, and services required. We offer
+                transparent pricing and will provide a complete breakdown of all
+                costs during our initial consultation. Contact us for a
+                personalized quote.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Do you offer virtual property tours?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Yes, we offer virtual tours for most of our listed properties.
+                You can view 360° virtual tours on our property listings page.
+                For properties without virtual tours, we can arrange live video
+                walkthroughs with our agents.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span
+                >How long does the buying/selling process typically take?</span
+              >
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+              <p>
+                The timeline varies depending on market conditions, property
+                type, and individual circumstances. On average, the selling
+                process takes 4-8 weeks from listing to closing, while buying
+                typically takes 6-12 weeks from search to closing. We'll provide
+                a personalized timeline during our consultation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Dalwara<span>Estates</span></div>
-                    <p>Dalwara Real Estate has been helping clients find their perfect properties for over 15 years. We
-                        specialize in residential and commercial properties with a commitment to exceptional service.
-                    </p>
-                    <div style="margin-top: 20px; display: flex; gap: 15px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="properties.html">Properties</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contact">
-                    <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Street, City Center, 10001</p>
-                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
-                    <p><i class="fas fa-envelope"></i> info@dalwaraestates.com</p>
-                    <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-about">
+            <div class="footer-logo">Dalwara<span>Estates</span></div>
+            <p>
+              Dalwara Real Estate has been helping clients find their perfect
+              properties for over 15 years. We specialize in residential and
+              commercial properties with a commitment to exceptional service.
+            </p>
+            <div style="margin-top: 20px; display: flex; gap: 15px">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
+          </div>
 
-            <div class="copyright">
-                <p>&copy; 2023 Dalwara Real Estate. All rights reserved.</p>
-            </div>
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="properties.html">Properties</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact Info</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> Plot No-411/2228,
+              Kantilo,Lane-3 Kalyan Vihar,Phase-1
+            </p>
+            <p><i class="fas fa-phone"></i> +91 7609869819</p>
+            <p><i class="fas fa-envelope"></i> info@dalwara.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+          </div>
         </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Dalwara Estate. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="js/script.js"> </script>
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>
